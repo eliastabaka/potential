@@ -7,20 +7,26 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
+    @ObservedObject var model = ViewModel()
+    
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            List (model.list) { item in
+                Text(item.name)
+                }
+            }
         }
-        .padding()
+        
+        init() {
+            model.getData()
+        }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
-}
