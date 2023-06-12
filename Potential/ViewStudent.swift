@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  ViewStudent.swift
 //  Potential
 //
 //  Created by Elias Tabaka on 12/06/2023.
@@ -8,13 +8,13 @@
 import Foundation
 import Firebase
 
-class ViewModel: ObservableObject {
+class ViewStudent: ObservableObject {
     
-    @Published var list = [Module]()
+    @Published var list = [Student]()
     
     func deleteData(moduleDelete: Module) {
         let db = Firestore.firestore()
-        db.collection("modules").document(moduleDelete.id).delete { error in
+        db.collection("students").document(moduleDelete.id).delete { error in
             if error == nil {
                 
                 DispatchQueue.main.async {
@@ -28,7 +28,7 @@ class ViewModel: ObservableObject {
     
     func addData(code: String, name: String) {
         let db = Firestore.firestore()
-        db.collection("modules").addDocument(data: ["code": code, "name": name]) { error in
+        db.collection("students").addDocument(data: ["code": code, "name": name]) { error in
             
             if error == nil {
                 self.getData()
@@ -44,7 +44,7 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         
         // Read the documents at a specific path
-        db.collection("modules").getDocuments { snapshot, error in
+        db.collection("students").getDocuments { snapshot, error in
             
             // Check for errors
             if error == nil {
@@ -59,7 +59,7 @@ class ViewModel: ObservableObject {
                         self.list = snapshot.documents.map { d in
                             
                             // Create a Todo item for each document returned
-                            return Module(id: d.documentID, code: d["code"] as? String ?? "", name: d["name"] as? String ?? "")
+                            return Student(id: d.documentID, firstName: d["firstName"] as? String ?? "", lastName: d["lastName"] as? String ?? "", email: d["email"] as? String ?? "")
                         }
                         
                         
