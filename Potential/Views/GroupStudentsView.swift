@@ -10,11 +10,30 @@ import SwiftUI
 struct GroupStudentsView: View {
     let module: Module
     @ObservedObject var students = ViewStudent()
+    @State private var nameSharing = false
+    @State private var me = Student(id: "", name: "", email: "")
     
     
     var body: some View {
-            VStack {
-                List(students.list) { item in
+        VStack {
+            List {
+                Section {
+                    Toggle(isOn: $nameSharing) {
+                        Text(nameSharing ? "Your name is visible." : "Your name is hidden.")
+                    }.onChange(of: nameSharing) { value in
+                        
+                        
+                        if me.email != "mmtabaka1@sheffield.ac.uk" && nameSharing {
+                            students.addData(name: "Elias", email: "mmtabaka1@sheffield.ac.uk", moduleDocumentId: module.id)
+                        } else if me.email == "mmtabaka1@sheffield.ac.uk" && !nameSharing {
+                            students.deleteData(module: module, studentDelete: me)
+                            me = Student(id: "", name: "", email: "")
+                        }
+                        students.getData(moduleDocumentId: module.id)
+                        
+                    }
+                }
+                ForEach(students.list) { item in
                     VStack(alignment: .leading) {
                         HStack {
                             Text("\(item.name)")
@@ -23,13 +42,28 @@ struct GroupStudentsView: View {
                         Text(item.email)
                     }
                 }
+                
             }
-            .navigationTitle(module.code)
-            .navigationBarTitleDisplayMode(.inline)
+        }
+        .navigationTitle(module.code)
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear() {
+            students.getData(moduleDocumentId: module.id)
+            for student in students.list {
+                if student.email == "mmtabaka1@sheffield.ac.uk" {
+                    me = student
+                    nameSharing = true
+                    break
+                } else {
+                    nameSharing = false
+                }
+            }
+        }
     }
     init(module: Module) {
         self.module = module
         students.getData(moduleDocumentId: module.id)
+        
     }
 }
 

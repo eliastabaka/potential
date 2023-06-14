@@ -12,31 +12,31 @@ class ViewStudent: ObservableObject {
     
     @Published var list = [Student]()
     
-//    func deleteData(moduleDelete: Module) {
-//        let db = Firestore.firestore()
-//        db.collection("students").document(moduleDelete.id).delete { error in
-//            if error == nil {
-//
-//                DispatchQueue.main.async {
-//                    self.list.removeAll { module in
-//                        return module.id == moduleDelete.id
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    func addData(code: String, name: String) {
-//        let db = Firestore.firestore()
-//        db.collection("students").addDocument(data: ["code": code, "name": name]) { error in
-//
-//            if error == nil {
-//                self.getData()
-//            } else {
-//
-//            }
-//        }
-//    }
+    func deleteData(module: Module, studentDelete: Student) {
+        let db = Firestore.firestore()
+        db.collection("modules").document(module.id).collection("students").document(studentDelete.id).delete { error in
+            if error == nil {
+
+                DispatchQueue.main.async {
+                    self.list.removeAll { student in
+                        return student.id == studentDelete.id
+                    }
+                }
+            }
+        }
+    }
+
+    func addData(name: String, email: String, moduleDocumentId: String) {
+        let db = Firestore.firestore()
+       db.collection("modules").document(moduleDocumentId).collection("students").addDocument(data: ["name": name, "email": email]) { error in
+
+            if error == nil {
+                self.getData(moduleDocumentId: moduleDocumentId)
+            } else {
+
+            }
+        }
+    }
     
     func getData(moduleDocumentId: String) {
         

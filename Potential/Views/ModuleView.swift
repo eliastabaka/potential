@@ -22,6 +22,7 @@ struct ModuleView: View {
                 }
             }
             .navigationTitle("Modules")
+            
         }
     }
     
