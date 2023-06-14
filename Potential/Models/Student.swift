@@ -10,8 +10,7 @@ import Foundation
 struct Student: Identifiable {
     
     var id: String
-    var firstName: String
-    var lastName: String
+    var name: String
     var email: String
 }
 

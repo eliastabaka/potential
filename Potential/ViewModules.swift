@@ -1,16 +1,16 @@
 //
-//  ViewStudent.swift
+//  ViewModules.swift
 //  Potential
 //
-//  Created by Elias Tabaka on 12/06/2023.
+//  Created by Elias Tabaka on 14/06/2023.
 //
 
 import Foundation
 import Firebase
 
-class ViewStudent: ObservableObject {
+class ViewModules: ObservableObject {
     
-    @Published var list = [Student]()
+    @Published var list = [Module]()
     
 //    func deleteData(moduleDelete: Module) {
 //        let db = Firestore.firestore()
@@ -38,13 +38,13 @@ class ViewStudent: ObservableObject {
 //        }
 //    }
     
-    func getData(moduleDocumentId: String) {
+    func getData() {
         
         // Get a reference to the database
         let db = Firestore.firestore()
         
         // Read the documents at a specific path
-        db.collection("modules").document(moduleDocumentId).collection("students").getDocuments { snapshot, error in
+        db.collection("modules").getDocuments { snapshot, error in
             
             // Check for errors
             if error == nil {
@@ -59,10 +59,8 @@ class ViewStudent: ObservableObject {
                         self.list = snapshot.documents.map { d in
                             
                             // Create a Todo item for each document returned
-                            return Student(id: d.documentID, name: d["name"] as? String ?? "", email: d["email"] as? String ?? "")
+                            return Module(id: d.documentID, code: d["code"] as? String ?? "", name: d["name"] as? String ?? "")
                         }
-                        
-                        
                     }
                 }
                 else {
