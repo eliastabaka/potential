@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A1F2A36918800F57E1E /* PotentialApp.swift */; };
-		66B50A222A36918800F57E1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A212A36918800F57E1E /* ContentView.swift */; };
 		66B50A242A36918800F57E1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A232A36918800F57E1E /* Assets.xcassets */; };
 		66B50A272A36918800F57E1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A262A36918800F57E1E /* Preview Assets.xcassets */; };
 		66B50A2E2A369C9700F57E1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A2D2A369C9600F57E1E /* GoogleService-Info.plist */; };
@@ -25,12 +24,15 @@
 		66B50A482A3A162D00F57E1E /* ViewModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A472A3A162D00F57E1E /* ViewModules.swift */; };
 		66B50A4B2A3C464F00F57E1E /* Potential.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A492A3C464F00F57E1E /* Potential.xcdatamodeld */; };
 		66B50A4D2A3C466600F57E1E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A4C2A3C466600F57E1E /* DataController.swift */; };
+		66B50A4F2A3C64F900F57E1E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A4E2A3C64F900F57E1E /* MainView.swift */; };
+		66B50A512A3C686800F57E1E /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A502A3C686800F57E1E /* GradeView.swift */; };
+		66B50A532A3C690100F57E1E /* AttendanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A522A3C690100F57E1E /* AttendanceView.swift */; };
+		66B50A552A3C6A6200F57E1E /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A542A3C6A6200F57E1E /* DeadlineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		66B50A1C2A36918800F57E1E /* Potential.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Potential.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B50A1F2A36918800F57E1E /* PotentialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialApp.swift; sourceTree = "<group>"; };
-		66B50A212A36918800F57E1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		66B50A232A36918800F57E1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66B50A262A36918800F57E1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		66B50A2D2A369C9600F57E1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -43,6 +45,10 @@
 		66B50A472A3A162D00F57E1E /* ViewModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModules.swift; sourceTree = "<group>"; };
 		66B50A4A2A3C464F00F57E1E /* Potential.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Potential.xcdatamodel; sourceTree = "<group>"; };
 		66B50A4C2A3C466600F57E1E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		66B50A4E2A3C64F900F57E1E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		66B50A502A3C686800F57E1E /* GradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
+		66B50A522A3C690100F57E1E /* AttendanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceView.swift; sourceTree = "<group>"; };
+		66B50A542A3C6A6200F57E1E /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				66B50A1F2A36918800F57E1E /* PotentialApp.swift */,
+				66B50A502A3C686800F57E1E /* GradeView.swift */,
+				66B50A542A3C6A6200F57E1E /* DeadlineView.swift */,
+				66B50A522A3C690100F57E1E /* AttendanceView.swift */,
+				66B50A4E2A3C64F900F57E1E /* MainView.swift */,
 				66B50A342A36A0EC00F57E1E /* Models */,
 				66B50A442A3A140900F57E1E /* Views */,
 				66B50A232A36918800F57E1E /* Assets.xcassets */,
@@ -122,7 +132,6 @@
 		66B50A442A3A140900F57E1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				66B50A212A36918800F57E1E /* ContentView.swift */,
 				66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */,
 				66B50A452A3A15BA00F57E1E /* ModuleView.swift */,
 			);
@@ -209,7 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66B50A222A36918800F57E1E /* ContentView.swift in Sources */,
+				66B50A532A3C690100F57E1E /* AttendanceView.swift in Sources */,
+				66B50A4F2A3C64F900F57E1E /* MainView.swift in Sources */,
 				66B50A412A374A0900F57E1E /* Student.swift in Sources */,
 				66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */,
 				66B50A3D2A36A88A00F57E1E /* ViewModel.swift in Sources */,
@@ -217,8 +227,10 @@
 				66B50A4D2A3C466600F57E1E /* DataController.swift in Sources */,
 				66B50A432A374A9800F57E1E /* ViewStudent.swift in Sources */,
 				66B50A3F2A3748AC00F57E1E /* ModuleStudentsView.swift in Sources */,
+				66B50A512A3C686800F57E1E /* GradeView.swift in Sources */,
 				66B50A482A3A162D00F57E1E /* ViewModules.swift in Sources */,
 				66B50A4B2A3C464F00F57E1E /* Potential.xcdatamodeld in Sources */,
+				66B50A552A3C6A6200F57E1E /* DeadlineView.swift in Sources */,
 				66B50A362A36A11D00F57E1E /* Module.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
