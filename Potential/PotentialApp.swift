@@ -32,19 +32,19 @@ struct PotentialApp: App {
                         Label("Menu", systemImage: "list.dash")
                     }
                 
-                AttendanceView()
+                DeadlineView()
                     .tabItem {
                         Label("Deadlines", systemImage: "list.clipboard")
-                    }
-                
-                GradeView()
-                    .tabItem {
-                        Label("Grades", systemImage: "percent")
                     }
                 
                 AttendanceView()
                     .tabItem {
                         Label("Attendance", systemImage: "clock.badge.checkmark")
+                    }
+                
+                GradeView()
+                    .tabItem {
+                        Label("Grades", systemImage: "percent")
                     }
                 
                 ModuleView(username: username, email: email)
