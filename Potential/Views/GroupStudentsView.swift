@@ -12,6 +12,8 @@ struct GroupStudentsView: View {
     @ObservedObject var students = ViewStudent()
     @State private var nameSharing = false
     @State private var me = Student(id: "", name: "", email: "")
+    @State private var username: String
+    @State private var email: String
     
     
     var body: some View {
@@ -23,9 +25,9 @@ struct GroupStudentsView: View {
                     }.onChange(of: nameSharing) { value in
                         
                         
-                        if me.email != "mmtabaka1@sheffield.ac.uk" && nameSharing {
-                            students.addData(name: "Elias", email: "mmtabaka1@sheffield.ac.uk", moduleDocumentId: module.id)
-                        } else if me.email == "mmtabaka1@sheffield.ac.uk" && !nameSharing {
+                        if me.email != email && nameSharing {
+                            students.addData(name: username, email: email, moduleDocumentId: module.id)
+                        } else if me.email == email && !nameSharing {
                             students.deleteData(module: module, studentDelete: me)
                             me = Student(id: "", name: "", email: "")
                         }
@@ -50,7 +52,7 @@ struct GroupStudentsView: View {
         .onAppear() {
             students.getData(moduleDocumentId: module.id)
             for student in students.list {
-                if student.email == "mmtabaka1@sheffield.ac.uk" {
+                if student.email == email {
                     me = student
                     nameSharing = true
                     break
@@ -60,8 +62,10 @@ struct GroupStudentsView: View {
             }
         }
     }
-    init(module: Module) {
+    init(username: String, email: String, module: Module) {
         self.module = module
+        self.username = username
+        self.email = email
         students.getData(moduleDocumentId: module.id)
         
     }

@@ -9,12 +9,12 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var myName = "Elias"
-    @State private var myEmail = "mmtabaka1@sheffield.ac.uk"
+    @AppStorage("username") var username = "Name Name"
+    @AppStorage("email") var email = "nn1@sheffield.ac.uk"
     
     
     var body: some View {
-        ModuleView()
+        ModuleView(username: username, email: email)
     }
 }
 

@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ModuleView: View {
     @ObservedObject var modules = ViewModules()
+    @State private var username: String
+    @State private var email: String
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(modules.list) { module in
                     NavigationLink {
-                        GroupStudentsView(module: module)
+                        GroupStudentsView(username: username, email: email, module: module)
                     } label: {
                         Text(module.name)
                     }
@@ -26,13 +28,15 @@ struct ModuleView: View {
         }
     }
     
-    init() {
+    init(username: String, email: String) {
+        self.username = username
+        self.email = email
         modules.getData()
     }
 }
 
 struct ModuleView_Previews: PreviewProvider {
     static var previews: some View {
-        ModuleView()
+        ModuleView(username: "Name Name", email: "email")
     }
 }
