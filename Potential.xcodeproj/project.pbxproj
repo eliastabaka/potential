@@ -28,6 +28,7 @@
 		66B50A512A3C686800F57E1E /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A502A3C686800F57E1E /* GradeView.swift */; };
 		66B50A532A3C690100F57E1E /* AttendanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A522A3C690100F57E1E /* AttendanceView.swift */; };
 		66B50A552A3C6A6200F57E1E /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A542A3C6A6200F57E1E /* DeadlineView.swift */; };
+		66B50A572A3C7BC300F57E1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A562A3C7BC300F57E1E /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		66B50A502A3C686800F57E1E /* GradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
 		66B50A522A3C690100F57E1E /* AttendanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceView.swift; sourceTree = "<group>"; };
 		66B50A542A3C6A6200F57E1E /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
+		66B50A562A3C7BC300F57E1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				66B50A542A3C6A6200F57E1E /* DeadlineView.swift */,
 				66B50A522A3C690100F57E1E /* AttendanceView.swift */,
 				66B50A4E2A3C64F900F57E1E /* MainView.swift */,
+				66B50A562A3C7BC300F57E1E /* SettingsView.swift */,
 				66B50A342A36A0EC00F57E1E /* Models */,
 				66B50A442A3A140900F57E1E /* Views */,
 				66B50A232A36918800F57E1E /* Assets.xcassets */,
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B50A572A3C7BC300F57E1E /* SettingsView.swift in Sources */,
 				66B50A532A3C690100F57E1E /* AttendanceView.swift in Sources */,
 				66B50A4F2A3C64F900F57E1E /* MainView.swift in Sources */,
 				66B50A412A374A0900F57E1E /* Student.swift in Sources */,

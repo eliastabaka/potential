@@ -8,10 +8,24 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var showingSettings = false
+    
     var body: some View {
         NavigationView {
             Text("Main View")
                 .navigationTitle("Potential")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingSettings = true
+                        } label: {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                    }
+                }
+                .sheet(isPresented: $showingSettings) {
+                    SettingsView()
+                }
         }
     }
 }

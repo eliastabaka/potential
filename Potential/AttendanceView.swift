@@ -12,6 +12,7 @@ struct AttendanceView: View {
         NavigationView {
             Text("Attendance View")
                 .navigationTitle("Attendance")
+                
         }
     }
 }
