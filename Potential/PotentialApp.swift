@@ -20,10 +20,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct PotentialApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var dataController = DataController()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

@@ -9,8 +9,8 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @AppStorage("username") var username = "Name Name"
-    @AppStorage("email") var email = "nn1@sheffield.ac.uk"
+    @AppStorage("username") var username = "Hannah Cole"
+    @AppStorage("email") var email = "hcole1@sheffield.ac.uk"
     
     
     var body: some View {

@@ -17,14 +17,13 @@ struct ModuleView: View {
             List {
                 ForEach(modules.list) { module in
                     NavigationLink {
-                        GroupStudentsView(username: username, email: email, module: module)
+                        ModuleStudentsView(username: username, email: email, module: module)
                     } label: {
                         Text(module.name)
                     }
                 }
             }
             .navigationTitle("Modules")
-            
         }
     }
     
