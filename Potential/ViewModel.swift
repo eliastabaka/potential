@@ -10,9 +10,9 @@ import Firebase
 
 class ViewModel: ObservableObject {
     
-    @Published var list = [Module]()
+    @Published var list = [ModuleExt]()
     
-    func deleteData(moduleDelete: Module) {
+    func deleteData(moduleDelete: ModuleExt) {
         let db = Firestore.firestore()
         db.collection("modules").document(moduleDelete.id).delete { error in
             if error == nil {
@@ -59,7 +59,7 @@ class ViewModel: ObservableObject {
                         self.list = snapshot.documents.map { d in
                             
                             // Create a Todo item for each document returned
-                            return Module(id: d.documentID, code: d["code"] as? String ?? "", name: d["name"] as? String ?? "")
+                            return ModuleExt(id: d.documentID, code: d["code"] as? String ?? "", name: d["name"] as? String ?? "")
                         }
                         
                         

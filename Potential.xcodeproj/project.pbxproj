@@ -13,7 +13,7 @@
 		66B50A2E2A369C9700F57E1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A2D2A369C9600F57E1E /* GoogleService-Info.plist */; };
 		66B50A312A369D0400F57E1E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 66B50A302A369D0400F57E1E /* FirebaseAnalytics */; };
 		66B50A332A369D0400F57E1E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66B50A322A369D0400F57E1E /* FirebaseAnalyticsSwift */; };
-		66B50A362A36A11D00F57E1E /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A352A36A11D00F57E1E /* Module.swift */; };
+		66B50A362A36A11D00F57E1E /* ModuleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A352A36A11D00F57E1E /* ModuleExt.swift */; };
 		66B50A392A36A48000F57E1E /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66B50A382A36A48000F57E1E /* FirebaseDatabaseSwift */; };
 		66B50A3B2A36A4AB00F57E1E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66B50A3A2A36A4AB00F57E1E /* FirebaseFirestoreSwift */; };
 		66B50A3D2A36A88A00F57E1E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A3C2A36A88A00F57E1E /* ViewModel.swift */; };
@@ -37,7 +37,7 @@
 		66B50A232A36918800F57E1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66B50A262A36918800F57E1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		66B50A2D2A369C9600F57E1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		66B50A352A36A11D00F57E1E /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		66B50A352A36A11D00F57E1E /* ModuleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleExt.swift; sourceTree = "<group>"; };
 		66B50A3C2A36A88A00F57E1E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleStudentsView.swift; sourceTree = "<group>"; };
 		66B50A402A374A0900F57E1E /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		66B50A342A36A0EC00F57E1E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				66B50A352A36A11D00F57E1E /* Module.swift */,
+				66B50A352A36A11D00F57E1E /* ModuleExt.swift */,
 				66B50A402A374A0900F57E1E /* Student.swift */,
 			);
 			path = Models;
@@ -235,7 +235,7 @@
 				66B50A482A3A162D00F57E1E /* ViewModules.swift in Sources */,
 				66B50A4B2A3C464F00F57E1E /* Potential.xcdatamodeld in Sources */,
 				66B50A552A3C6A6200F57E1E /* DeadlineView.swift in Sources */,
-				66B50A362A36A11D00F57E1E /* Module.swift in Sources */,
+				66B50A362A36A11D00F57E1E /* ModuleExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

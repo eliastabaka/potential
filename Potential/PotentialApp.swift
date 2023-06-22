@@ -21,13 +21,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct PotentialApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var dataController = DataController()
-    @AppStorage("username") var username = "Hannah Cole"
-    @AppStorage("email") var email = "hcole1@sheffield.ac.uk"
+    @AppStorage("username") var username = "Elias Tabaka"
+    @AppStorage("email") var email = "mmtabaka1@sheffield.ac.uk"
     
     var body: some Scene {
         WindowGroup {
             TabView {
-                MainView()
+                MainView(name: $username, email: $email)
                     .tabItem {
                         Label("Menu", systemImage: "list.dash")
                     }

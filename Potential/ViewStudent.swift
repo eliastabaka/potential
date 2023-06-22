@@ -12,7 +12,7 @@ class ViewStudent: ObservableObject {
     
     @Published var list = [Student]()
     
-    func deleteData(module: Module, studentDelete: Student) {
+    func deleteData(module: ModuleExt, studentDelete: Student) {
         let db = Firestore.firestore()
         db.collection("modules").document(module.id).collection("students").document(studentDelete.id).delete { error in
             if error == nil {

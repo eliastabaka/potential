@@ -8,16 +8,22 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Binding var name: String
+    @Binding var email: String
+    
     var body: some View {
         NavigationView {
-            Text("Settings View")
+            List {
+                TextField("Name", text: $name)
+                TextField("Email Address", text: $email)
+            }
                 .navigationTitle("Settings")
         }
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SettingsView()
+//    }
+//}

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     @State private var showingSettings = false
+    @Binding var name: String
+    @Binding var email: String
     
     var body: some View {
         NavigationView {
@@ -24,14 +26,14 @@ struct MainView: View {
                     }
                 }
                 .sheet(isPresented: $showingSettings) {
-                    SettingsView()
+                    SettingsView(name: $name, email: $email)
                 }
         }
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView()
+//    }
+//}

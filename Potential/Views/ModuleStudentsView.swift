@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ModuleStudentsView: View {
-    let module: Module
+    let module: ModuleExt
     @ObservedObject var students = ViewStudent()
     @State private var nameSharing = false
     @State private var currentStudent = Student(id: "", name: "", email: "")
@@ -67,7 +67,7 @@ struct ModuleStudentsView: View {
         }
     }
     
-    init(username: String, email: String, module: Module) {
+    init(username: String, email: String, module: ModuleExt) {
         self.module = module
         self.mainUsername = username
         self.mainEmail = email
