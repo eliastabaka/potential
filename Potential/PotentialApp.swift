@@ -53,6 +53,7 @@ struct PotentialApp: App {
                         Label("Groups", systemImage: "person.3.fill")
                     }
             }
+            .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
