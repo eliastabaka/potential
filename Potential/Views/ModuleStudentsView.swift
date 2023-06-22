@@ -12,8 +12,8 @@ struct ModuleStudentsView: View {
     @ObservedObject var students = ViewStudent()
     @State private var nameSharing = false
     @State private var currentStudent = Student(id: "", name: "", email: "")
-    @State private var mainUsername: String
-    @State private var mainEmail: String
+    @Binding private var mainUsername: String
+    @Binding private var mainEmail: String
     
     
     var body: some View {
@@ -67,10 +67,10 @@ struct ModuleStudentsView: View {
         }
     }
     
-    init(username: String, email: String, module: ModuleExt) {
+    init(username: Binding<String>, email: Binding<String>, module: ModuleExt) {
         self.module = module
-        self.mainUsername = username
-        self.mainEmail = email
+        self._mainUsername = username
+        self._mainEmail = email
         students.getData(moduleDocumentId: module.id)
         
     }

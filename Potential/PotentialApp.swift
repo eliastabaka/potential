@@ -47,7 +47,7 @@ struct PotentialApp: App {
                         Label("Grades", systemImage: "percent")
                     }
                 
-                ModuleView(username: username, email: email)
+                ModuleView(username: $username, email: $email)
                     .environment(\.managedObjectContext, dataController.container.viewContext)
                     .tabItem {
                         Label("Groups", systemImage: "person.3.fill")

@@ -9,15 +9,15 @@ import SwiftUI
 
 struct ModuleView: View {
     @ObservedObject var modules = ViewModules()
-    @State private var username: String
-    @State private var email: String
+    @Binding private var username: String
+    @Binding private var email: String
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(modules.list) { module in
                     NavigationLink {
-                        ModuleStudentsView(username: username, email: email, module: module)
+                        ModuleStudentsView(username: $username, email: $email, module: module)
                     } label: {
                         Text(module.name)
                     }
@@ -27,15 +27,15 @@ struct ModuleView: View {
         }
     }
     
-    init(username: String, email: String) {
-        self.username = username
-        self.email = email
+    init(username: Binding<String>, email: Binding<String>) {
+        self._username = username
+        self._email = email
         modules.getData()
     }
 }
 
-struct ModuleView_Previews: PreviewProvider {
-    static var previews: some View {
-        ModuleView(username: "Name Name", email: "email")
-    }
-}
+//struct ModuleView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ModuleView(username: "Name Name", email: "email")
+//    }
+//}
