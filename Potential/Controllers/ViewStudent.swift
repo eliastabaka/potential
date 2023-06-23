@@ -10,9 +10,9 @@ import Firebase
 
 class ViewStudent: ObservableObject {
     
-    @Published var list = [Student]()
+    @Published var list = [StudentExt]()
     
-    func deleteData(module: ModuleExt, studentDelete: Student) {
+    func deleteData(module: ModuleExt, studentDelete: StudentExt) {
         let db = Firestore.firestore()
         db.collection("modules").document(module.id).collection("students").document(studentDelete.id).delete { error in
             if error == nil {
@@ -60,7 +60,7 @@ class ViewStudent: ObservableObject {
                         self.list = snapshot.documents.map { d in
                             
                             // Create a Todo item for each document returned
-                            return Student(id: d.documentID, name: d["name"] as? String ?? "", email: d["email"] as? String ?? "")
+                            return StudentExt(id: d.documentID, name: d["name"] as? String ?? "", email: d["email"] as? String ?? "")
                         }
                         
                         

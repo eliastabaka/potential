@@ -11,7 +11,7 @@ struct ModuleStudentsView: View {
     let module: ModuleExt
     @ObservedObject var students = ViewStudent()
     @State private var nameSharing = false
-    @State private var currentStudent = Student(id: "", name: "", email: "")
+    @State private var currentStudent = StudentExt(id: "", name: "", email: "")
     @Binding private var mainUsername: String
     @Binding private var mainEmail: String
     
@@ -29,12 +29,12 @@ struct ModuleStudentsView: View {
                         if currentStudent.email != mainEmail && nameSharing {
                             let studentID = students.addData(name: mainUsername, email: mainEmail, moduleDocumentId: module.id)
                             students.getData(moduleDocumentId: module.id)
-                            currentStudent = Student(id: studentID, name: mainUsername, email: mainEmail)
+                            currentStudent = StudentExt(id: studentID, name: mainUsername, email: mainEmail)
                             
                             // when student is visible
                         } else if currentStudent.email == mainEmail && !nameSharing {
                             students.deleteData(module: module, studentDelete: currentStudent)
-                            currentStudent = Student(id: "", name: "", email: "")
+                            currentStudent = StudentExt(id: "", name: "", email: "")
                         }
                         students.getData(moduleDocumentId: module.id)
                     }

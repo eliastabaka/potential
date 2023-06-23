@@ -21,13 +21,13 @@
 		66B50A3B2A36A4AB00F57E1E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66B50A3A2A36A4AB00F57E1E /* FirebaseFirestoreSwift */; };
 		66B50A3D2A36A88A00F57E1E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A3C2A36A88A00F57E1E /* ViewModel.swift */; };
 		66B50A3F2A3748AC00F57E1E /* ModuleStudentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */; };
-		66B50A412A374A0900F57E1E /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A402A374A0900F57E1E /* Student.swift */; };
+		66B50A412A374A0900F57E1E /* StudentExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A402A374A0900F57E1E /* StudentExt.swift */; };
 		66B50A432A374A9800F57E1E /* ViewStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A422A374A9800F57E1E /* ViewStudent.swift */; };
 		66B50A462A3A15BA00F57E1E /* ModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A452A3A15BA00F57E1E /* ModuleView.swift */; };
 		66B50A482A3A162D00F57E1E /* ViewModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A472A3A162D00F57E1E /* ViewModules.swift */; };
 		66B50A4B2A3C464F00F57E1E /* Potential.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A492A3C464F00F57E1E /* Potential.xcdatamodeld */; };
 		66B50A4D2A3C466600F57E1E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A4C2A3C466600F57E1E /* DataController.swift */; };
-		66B50A4F2A3C64F900F57E1E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A4E2A3C64F900F57E1E /* MainView.swift */; };
+		66B50A4F2A3C64F900F57E1E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A4E2A3C64F900F57E1E /* HomeView.swift */; };
 		66B50A512A3C686800F57E1E /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A502A3C686800F57E1E /* GradeView.swift */; };
 		66B50A532A3C690100F57E1E /* AttendanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A522A3C690100F57E1E /* AttendanceView.swift */; };
 		66B50A552A3C6A6200F57E1E /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A542A3C6A6200F57E1E /* DeadlineView.swift */; };
@@ -46,13 +46,13 @@
 		66B50A352A36A11D00F57E1E /* ModuleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleExt.swift; sourceTree = "<group>"; };
 		66B50A3C2A36A88A00F57E1E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleStudentsView.swift; sourceTree = "<group>"; };
-		66B50A402A374A0900F57E1E /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		66B50A402A374A0900F57E1E /* StudentExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExt.swift; sourceTree = "<group>"; };
 		66B50A422A374A9800F57E1E /* ViewStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStudent.swift; sourceTree = "<group>"; };
 		66B50A452A3A15BA00F57E1E /* ModuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleView.swift; sourceTree = "<group>"; };
 		66B50A472A3A162D00F57E1E /* ViewModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModules.swift; sourceTree = "<group>"; };
 		66B50A4A2A3C464F00F57E1E /* Potential.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Potential.xcdatamodel; sourceTree = "<group>"; };
 		66B50A4C2A3C466600F57E1E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		66B50A4E2A3C64F900F57E1E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		66B50A4E2A3C64F900F57E1E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		66B50A502A3C686800F57E1E /* GradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
 		66B50A522A3C690100F57E1E /* AttendanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceView.swift; sourceTree = "<group>"; };
 		66B50A542A3C6A6200F57E1E /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
@@ -74,6 +74,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		668EF7CA2A457596001BCA7E /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				66B50A562A3C7BC300F57E1E /* SettingsView.swift */,
+				66B50A502A3C686800F57E1E /* GradeView.swift */,
+				66B50A452A3A15BA00F57E1E /* ModuleView.swift */,
+				66B50A4E2A3C64F900F57E1E /* HomeView.swift */,
+				66B50A522A3C690100F57E1E /* AttendanceView.swift */,
+				66B50A542A3C6A6200F57E1E /* DeadlineView.swift */,
+			);
+			path = "Main Views";
+			sourceTree = "<group>";
+		};
+		668EF7CC2A45762A001BCA7E /* Add Views */ = {
+			isa = PBXGroup;
+			children = (
+				668EF7C42A4570FC001BCA7E /* AddAttendance.swift */,
+				668EF7C62A45734E001BCA7E /* AddDeadline.swift */,
+				668EF7C82A457355001BCA7E /* AddGrade.swift */,
+			);
+			path = "Add Views";
+			sourceTree = "<group>";
+		};
+		668EF7CD2A457748001BCA7E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				66B50A4C2A3C466600F57E1E /* DataController.swift */,
+				66B50A422A374A9800F57E1E /* ViewStudent.swift */,
+				66B50A3C2A36A88A00F57E1E /* ViewModel.swift */,
+				66B50A472A3A162D00F57E1E /* ViewModules.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		668EF7CE2A45778C001BCA7E /* Extra Views */ = {
+			isa = PBXGroup;
+			children = (
+				66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */,
+			);
+			path = "Extra Views";
+			sourceTree = "<group>";
+		};
 		66B50A132A36918800F57E1E = {
 			isa = PBXGroup;
 			children = (
@@ -95,22 +137,15 @@
 			isa = PBXGroup;
 			children = (
 				66B50A1F2A36918800F57E1E /* PotentialApp.swift */,
-				66B50A502A3C686800F57E1E /* GradeView.swift */,
-				66B50A542A3C6A6200F57E1E /* DeadlineView.swift */,
-				66B50A522A3C690100F57E1E /* AttendanceView.swift */,
-				66B50A4E2A3C64F900F57E1E /* MainView.swift */,
-				66B50A562A3C7BC300F57E1E /* SettingsView.swift */,
-				668EF7C42A4570FC001BCA7E /* AddAttendance.swift */,
-				66B50A342A36A0EC00F57E1E /* Models */,
-				66B50A442A3A140900F57E1E /* Views */,
+				668EF7CA2A457596001BCA7E /* Main Views */,
+				668EF7CC2A45762A001BCA7E /* Add Views */,
+				668EF7CE2A45778C001BCA7E /* Extra Views */,
+				668EF7CD2A457748001BCA7E /* Controllers */,
+				66B50A342A36A0EC00F57E1E /* External Models */,
 				66B50A232A36918800F57E1E /* Assets.xcassets */,
+				66B50A492A3C464F00F57E1E /* Potential.xcdatamodeld */,
 				66B50A2D2A369C9600F57E1E /* GoogleService-Info.plist */,
 				66B50A252A36918800F57E1E /* Preview Content */,
-				66B50A3C2A36A88A00F57E1E /* ViewModel.swift */,
-				66B50A422A374A9800F57E1E /* ViewStudent.swift */,
-				66B50A492A3C464F00F57E1E /* Potential.xcdatamodeld */,
-				66B50A4C2A3C466600F57E1E /* DataController.swift */,
-				66B50A472A3A162D00F57E1E /* ViewModules.swift */,
 			);
 			path = Potential;
 			sourceTree = "<group>";
@@ -123,13 +158,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		66B50A342A36A0EC00F57E1E /* Models */ = {
+		66B50A342A36A0EC00F57E1E /* External Models */ = {
 			isa = PBXGroup;
 			children = (
 				66B50A352A36A11D00F57E1E /* ModuleExt.swift */,
-				66B50A402A374A0900F57E1E /* Student.swift */,
+				66B50A402A374A0900F57E1E /* StudentExt.swift */,
 			);
-			path = Models;
+			path = "External Models";
 			sourceTree = "<group>";
 		};
 		66B50A372A36A48000F57E1E /* Frameworks */ = {
@@ -137,17 +172,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		66B50A442A3A140900F57E1E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */,
-				668EF7C62A45734E001BCA7E /* AddDeadline.swift */,
-				668EF7C82A457355001BCA7E /* AddGrade.swift */,
-				66B50A452A3A15BA00F57E1E /* ModuleView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +256,8 @@
 			files = (
 				66B50A572A3C7BC300F57E1E /* SettingsView.swift in Sources */,
 				66B50A532A3C690100F57E1E /* AttendanceView.swift in Sources */,
-				66B50A4F2A3C64F900F57E1E /* MainView.swift in Sources */,
-				66B50A412A374A0900F57E1E /* Student.swift in Sources */,
+				66B50A4F2A3C64F900F57E1E /* HomeView.swift in Sources */,
+				66B50A412A374A0900F57E1E /* StudentExt.swift in Sources */,
 				668EF7C72A45734E001BCA7E /* AddDeadline.swift in Sources */,
 				66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */,
 				66B50A3D2A36A88A00F57E1E /* ViewModel.swift in Sources */,
