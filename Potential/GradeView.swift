@@ -8,10 +8,24 @@
 import SwiftUI
 
 struct GradeView: View {
+    @State private var showingAdd = false
+    
     var body: some View {
         NavigationView {
             Text("Grade View")
                 .navigationTitle("Grades")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingAdd = true
+                        } label: {
+                            Label("Add Grade", systemImage: "plus")
+                        }
+                    }
+                }
+                .sheet(isPresented: $showingAdd) {
+                    AddGrade()
+                }
         }
         
     }

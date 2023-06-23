@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		668EF7C52A4570FC001BCA7E /* AddAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7C42A4570FC001BCA7E /* AddAttendance.swift */; };
+		668EF7C72A45734E001BCA7E /* AddDeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7C62A45734E001BCA7E /* AddDeadline.swift */; };
+		668EF7C92A457355001BCA7E /* AddGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7C82A457355001BCA7E /* AddGrade.swift */; };
 		66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A1F2A36918800F57E1E /* PotentialApp.swift */; };
 		66B50A242A36918800F57E1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A232A36918800F57E1E /* Assets.xcassets */; };
 		66B50A272A36918800F57E1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A262A36918800F57E1E /* Preview Assets.xcassets */; };
@@ -34,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		668EF7C42A4570FC001BCA7E /* AddAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAttendance.swift; sourceTree = "<group>"; };
+		668EF7C62A45734E001BCA7E /* AddDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeadline.swift; sourceTree = "<group>"; };
+		668EF7C82A457355001BCA7E /* AddGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGrade.swift; sourceTree = "<group>"; };
 		66B50A1C2A36918800F57E1E /* Potential.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Potential.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B50A1F2A36918800F57E1E /* PotentialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialApp.swift; sourceTree = "<group>"; };
 		66B50A232A36918800F57E1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */,
+				668EF7C62A45734E001BCA7E /* AddDeadline.swift */,
+				668EF7C82A457355001BCA7E /* AddGrade.swift */,
 				66B50A452A3A15BA00F57E1E /* ModuleView.swift */,
 			);
 			path = Views;
@@ -228,8 +234,10 @@
 				66B50A532A3C690100F57E1E /* AttendanceView.swift in Sources */,
 				66B50A4F2A3C64F900F57E1E /* MainView.swift in Sources */,
 				66B50A412A374A0900F57E1E /* Student.swift in Sources */,
+				668EF7C72A45734E001BCA7E /* AddDeadline.swift in Sources */,
 				66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */,
 				66B50A3D2A36A88A00F57E1E /* ViewModel.swift in Sources */,
+				668EF7C92A457355001BCA7E /* AddGrade.swift in Sources */,
 				66B50A462A3A15BA00F57E1E /* ModuleView.swift in Sources */,
 				66B50A4D2A3C466600F57E1E /* DataController.swift in Sources */,
 				66B50A432A374A9800F57E1E /* ViewStudent.swift in Sources */,

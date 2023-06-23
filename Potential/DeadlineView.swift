@@ -8,10 +8,24 @@
 import SwiftUI
 
 struct DeadlineView: View {
+    @State private var showingAdd = false
+    
     var body: some View {
         NavigationView {
             Text("Deadline View")
                 .navigationTitle("Deadlines")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingAdd = true
+                        } label: {
+                            Label("Add Deadline", systemImage: "plus")
+                        }
+                    }
+                }
+                .sheet(isPresented: $showingAdd) {
+                    AddDeadline()
+                }
         }
         
     }
