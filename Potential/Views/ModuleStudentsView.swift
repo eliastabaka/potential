@@ -44,7 +44,9 @@ struct ModuleStudentsView: View {
                 ForEach(students.list) { item in
                     VStack(alignment: .leading) {
                         Text("\(item.name)")
+                            .foregroundColor(item.email == mainEmail ? .green : .primary)
                         Text(item.email)
+                            .foregroundColor(item.email == mainEmail ? .green : .primary)
                     }
                 }
             }

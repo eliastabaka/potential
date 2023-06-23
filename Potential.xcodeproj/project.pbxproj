@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		668EF7C52A4570FC001BCA7E /* AddAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7C42A4570FC001BCA7E /* AddAttendance.swift */; };
 		66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A1F2A36918800F57E1E /* PotentialApp.swift */; };
 		66B50A242A36918800F57E1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A232A36918800F57E1E /* Assets.xcassets */; };
 		66B50A272A36918800F57E1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A262A36918800F57E1E /* Preview Assets.xcassets */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		668EF7C42A4570FC001BCA7E /* AddAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAttendance.swift; sourceTree = "<group>"; };
 		66B50A1C2A36918800F57E1E /* Potential.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Potential.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B50A1F2A36918800F57E1E /* PotentialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialApp.swift; sourceTree = "<group>"; };
 		66B50A232A36918800F57E1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				66B50A522A3C690100F57E1E /* AttendanceView.swift */,
 				66B50A4E2A3C64F900F57E1E /* MainView.swift */,
 				66B50A562A3C7BC300F57E1E /* SettingsView.swift */,
+				668EF7C42A4570FC001BCA7E /* AddAttendance.swift */,
 				66B50A342A36A0EC00F57E1E /* Models */,
 				66B50A442A3A140900F57E1E /* Views */,
 				66B50A232A36918800F57E1E /* Assets.xcassets */,
@@ -235,6 +238,7 @@
 				66B50A482A3A162D00F57E1E /* ViewModules.swift in Sources */,
 				66B50A4B2A3C464F00F57E1E /* Potential.xcdatamodeld in Sources */,
 				66B50A552A3C6A6200F57E1E /* DeadlineView.swift in Sources */,
+				668EF7C52A4570FC001BCA7E /* AddAttendance.swift in Sources */,
 				66B50A362A36A11D00F57E1E /* ModuleExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

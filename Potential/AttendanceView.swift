@@ -8,11 +8,24 @@
 import SwiftUI
 
 struct AttendanceView: View {
+    @State private var showingAdd = false
+    
     var body: some View {
         NavigationView {
             Text("Attendance View")
                 .navigationTitle("Attendance")
-                
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingAdd = true
+                        } label: {
+                            Label("Add Attendance", systemImage: "plus")
+                        }
+                    }
+                }
+                .sheet(isPresented: $showingAdd) {
+                    AddAttendance()
+                }
         }
     }
 }
