@@ -32,6 +32,7 @@ struct SettingsView: View {
                                     newModule.id = UUID()
                                     newModule.code = moduleE.code
                                     newModule.name = moduleE.name
+                                    newModule.extId = moduleE.id
                                     
                                     do {
                                         try moc.save()
@@ -48,7 +49,12 @@ struct SettingsView: View {
                     
                     Section {
                         ForEach(modules) { module in
-                            Text(module.code ?? "Unknown code")
+                            NavigationLink {
+                                AddAssessment(module: module)
+                            } label: {
+                                Text(module.code ?? "Unknown code")
+                            }
+                            
                         }
                         .onDelete(perform: deleteModules)
                     }

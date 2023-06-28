@@ -12,6 +12,7 @@
     </entity>
     <entity name="Module" representedClassName="Module" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String"/>
+        <attribute name="extId" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
