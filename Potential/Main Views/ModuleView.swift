@@ -23,6 +23,9 @@ struct ModuleView: View {
                     }
                 }
             }
+            .onAppear() {
+                modules.getData()
+            }
             .navigationTitle("Modules")
         }
     }
