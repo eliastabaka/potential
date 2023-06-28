@@ -26,12 +26,16 @@ struct GradeView: View {
                 ForEach(modules) { module in
                     Section {
                         ForEach(assessments.filter { a in return module.code ?? "" == a.moduleCode ?? ""}) { assessment in
-                            VStack(alignment: .leading) {
-                                
-                                Text(assessment.name ?? "n")
-                                Text(String(Int(assessment.percentage)))
-                                Text(String(assessment.grade))
-                                
+                            NavigationLink {
+                                AddGrade(assessment: assessment)
+                            } label: {
+                                VStack(alignment: .leading) {
+
+                                    Text(assessment.name ?? "n")
+                                    Text(String(Int(assessment.percentage)))
+                                    Text(String(assessment.grade))
+
+                                }
                             }
                         }
                     } header: {
@@ -51,9 +55,6 @@ struct GradeView: View {
                         Label("Add Grade", systemImage: "plus")
                     }
                 }
-            }
-            .sheet(isPresented: $showingAdd) {
-                AddGrade()
             }
         }
     }
