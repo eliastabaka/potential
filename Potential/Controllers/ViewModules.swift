@@ -60,7 +60,7 @@ class ViewModules: ObservableObject {
                         self.list = snapshot.documents.map { d in
                             
                             // Create a Todo item for each document returned
-                            return ModuleExt(id: d.documentID, code: d["code"] as? String ?? "", name: d["name"] as? String ?? "")
+                            return ModuleExt(id: d.documentID, code: d["code"] as? String ?? "", name: d["name"] as? String ?? "", credits: d["credits"] as? Int ?? 0)
                         }
                     }
                 }

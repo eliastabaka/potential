@@ -21,7 +21,6 @@
 		66B50A362A36A11D00F57E1E /* ModuleExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A352A36A11D00F57E1E /* ModuleExt.swift */; };
 		66B50A392A36A48000F57E1E /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66B50A382A36A48000F57E1E /* FirebaseDatabaseSwift */; };
 		66B50A3B2A36A4AB00F57E1E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66B50A3A2A36A4AB00F57E1E /* FirebaseFirestoreSwift */; };
-		66B50A3D2A36A88A00F57E1E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A3C2A36A88A00F57E1E /* ViewModel.swift */; };
 		66B50A3F2A3748AC00F57E1E /* ModuleStudentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */; };
 		66B50A412A374A0900F57E1E /* StudentExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A402A374A0900F57E1E /* StudentExt.swift */; };
 		66B50A432A374A9800F57E1E /* ViewStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A422A374A9800F57E1E /* ViewStudent.swift */; };
@@ -48,7 +47,6 @@
 		66B50A262A36918800F57E1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		66B50A2D2A369C9600F57E1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66B50A352A36A11D00F57E1E /* ModuleExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleExt.swift; sourceTree = "<group>"; };
-		66B50A3C2A36A88A00F57E1E /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleStudentsView.swift; sourceTree = "<group>"; };
 		66B50A402A374A0900F57E1E /* StudentExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExt.swift; sourceTree = "<group>"; };
 		66B50A422A374A9800F57E1E /* ViewStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStudent.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 			children = (
 				66B50A4C2A3C466600F57E1E /* DataController.swift */,
 				66B50A422A374A9800F57E1E /* ViewStudent.swift */,
-				66B50A3C2A36A88A00F57E1E /* ViewModel.swift */,
 				66B50A472A3A162D00F57E1E /* ViewModules.swift */,
 			);
 			path = Controllers;
@@ -267,7 +264,6 @@
 				66B50A412A374A0900F57E1E /* StudentExt.swift in Sources */,
 				668EF7C72A45734E001BCA7E /* AddDeadline.swift in Sources */,
 				66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */,
-				66B50A3D2A36A88A00F57E1E /* ViewModel.swift in Sources */,
 				668EF7C92A457355001BCA7E /* AddGrade.swift in Sources */,
 				66B50A462A3A15BA00F57E1E /* ModuleView.swift in Sources */,
 				66B50A4D2A3C466600F57E1E /* DataController.swift in Sources */,

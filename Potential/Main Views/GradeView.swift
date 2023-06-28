@@ -28,7 +28,7 @@ struct GradeView: View {
                             }
                         }
                     } header: {
-                        Text(module.code ?? "N/A")
+                        Text("\(module.code ?? "N/A")(\(module.credits))")
                     }
                 }
             }

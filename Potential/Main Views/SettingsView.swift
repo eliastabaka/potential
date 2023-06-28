@@ -33,6 +33,7 @@ struct SettingsView: View {
                                     newModule.code = moduleE.code
                                     newModule.name = moduleE.name
                                     newModule.extId = moduleE.id
+                                    newModule.credits = Int16(moduleE.credits)
                                     
                                     do {
                                         try moc.save()
