@@ -49,9 +49,9 @@ struct AddAssessment: View {
             Section {
                 ForEach(assessments) { assessment in
                     if assessment.moduleCode == module.code {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text(assessment.moduleCode ?? "Unknown")
-                            Text(assessment.name ?? "Unknown")
+                            Text(assessment.name?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "Unknown")
                         }
                     }
                 }
