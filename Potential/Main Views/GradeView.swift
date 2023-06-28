@@ -11,11 +11,18 @@ struct GradeView: View {
     @State private var showingAdd = false
     @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
     @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
+    
+    @State private var gradeAverage = 0.0
+    
     var number = 0
     
     var body: some View {
         NavigationView {
             List {
+                Section {
+                    Text("Average \(gradeAverage)")
+                }
+                
                 ForEach(modules) { module in
                     Section {
                         ForEach(assessments.filter { a in return module.code ?? "" == a.moduleCode ?? ""}) { assessment in
@@ -32,6 +39,9 @@ struct GradeView: View {
                     }
                 }
             }
+            .onAppear() {
+                updateAverage()
+            }
             .navigationTitle("Grades")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -46,7 +56,17 @@ struct GradeView: View {
                 AddGrade()
             }
         }
+    }
+    
+    func updateAverage() {
+        var sum = 0.0
+        for module in modules {
+            for assessment in (assessments.filter { a in return module.code ?? "" == a.moduleCode ?? ""}) {
+                sum += Double(assessment.grade) * Double(assessment.percentage) / 100.0 * Double(module.credits)
+            }
+        }
         
+        gradeAverage = sum / 120.0
     }
 }
 
