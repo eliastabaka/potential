@@ -9,22 +9,70 @@ import SwiftUI
 
 struct AddAssessment: View {
     let module: Module
-    @ObservedObject var modules = ViewModules()
+    @ObservedObject var modulesExt = ViewModules()
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
     
     var body: some View {
         List {
             Section {
-                ForEach(modules.assessmentList) { assessment in
-                    Text(assessment.name)
+                ForEach(modulesExt.assessmentList) { assessmentE in
+                    HStack {
+                        Text(assessmentE.name)
+                        Spacer()
+                        Button {
+                            let newAssessment = Assessment(context: moc)
+                            newAssessment.id = UUID()
+                            newAssessment.name = assessmentE.name
+                            newAssessment.percentage = Int16(assessmentE.percentage)
+                            newAssessment.grade = 0
+                            newAssessment.moduleCode = module.code
+                            
+                            
+                            do {
+                                try moc.save()
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        } label: {
+                            Label("", systemImage: "plus")
+                        }
+                    }
                 }
+                
+            }
+            .onAppear() {
+                modulesExt.getAssessmentData(moduleDocumentId: module.extId ?? "")
+            }
+            
+            
+            Section {
+                ForEach(assessments) { assessment in
+                    if assessment.moduleCode == module.code {
+                        VStack {
+                            Text(assessment.moduleCode ?? "Unknown")
+                            Text(assessment.name ?? "Unknown")
+                        }
+                    }
+                }
+                .onDelete(perform: deleteAssessments)
             }
         }
     }
     
     init(module: Module) {
         self.module = module
-        modules.getAssessmentData(moduleDocumentId: module.extId ?? "")
+        modulesExt.getAssessmentData(moduleDocumentId: module.extId ?? "")
         
+    }
+    
+    func deleteAssessments(at offsets: IndexSet) {
+        for offset in offsets {
+            let assessment = assessments[offset]
+            moc.delete(assessment)
+        }
+        
+        try? moc.save()
     }
 }
 
