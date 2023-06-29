@@ -16,7 +16,7 @@ struct EA: Identifiable, Equatable {
 
 struct EAView : View {
     
-    @State var ea: EA
+    @Binding var ea: EA
     @State var selection = 0.0
     
     var body: some View {
@@ -63,12 +63,10 @@ struct GradePredictionView: View {
                 }
                 
                 ForEach($EAs) { a in
-                    VStack {
-                        Slider(value: a.pred, in: 0...100)
-                    }
-                    .onChange(of: EAs) { v in
-                        add()
-                    }
+                    EAView(ea: a, selection: 0.0)
+                        .onChange(of: EAs) { v in
+                            add()
+                        }
                 }
                 
             }
