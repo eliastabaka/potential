@@ -10,6 +10,7 @@ import SwiftUI
 struct EA: Identifiable, Equatable {
     var id = UUID()
     let assessment: Assessment
+    let module: Module
     var pred: Double
 }
 
@@ -57,6 +58,10 @@ struct GradePredictionView: View {
                     Text("Sum \(String(format: "%.2f", sum))")
                 }
                 
+                Section {
+                    Text("Prediction \(String(format: "%.2f", (sum + gradeAverage) / 120.0))")
+                }
+                
                 ForEach($EAs) { a in
                     VStack {
                         Slider(value: a.pred, in: 0...100)
@@ -71,7 +76,7 @@ struct GradePredictionView: View {
                 for module in modules {
                     for assessment in (assessments.filter { a in return module.code ?? "" == a.moduleCode ?? "" && a.grade == 0}) {
                         
-                        EAs.append(EA(assessment: assessment, pred: 0.0))
+                        EAs.append(EA(assessment: assessment, module: module, pred: 0.0))
                         
                     }
                 }
@@ -83,7 +88,7 @@ struct GradePredictionView: View {
     func add() {
         sum = 0
         for i in EAs {
-            sum += i.pred
+            sum += i.pred * Double(i.assessment.percentage) / 100.0 * Double(i.module.credits)
         }
     }
     
@@ -95,7 +100,7 @@ struct GradePredictionView: View {
             }
         }
         
-        gradeAverage = sum / 120.0
+        gradeAverage = sum
     }
 }
 
