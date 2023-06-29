@@ -7,64 +7,65 @@
 
 import SwiftUI
 
-struct EA: Identifiable, Equatable {
+// Struct wrapping around assessment and module + adding extra prediction field
+struct PredictionAssessment: Identifiable, Equatable {
     var id = UUID()
     let assessment: Assessment
     let module: Module
-    var pred: Double
+    var gradeEstimation: Double
 }
 
-struct EAView : View {
-    
-    @Binding var ea: EA
+
+// Helper View containing individual state for each assessment
+struct PAView : View {
+    @Binding var predictionAssessment: PredictionAssessment
     @State var selection = 0.0
     
     var body: some View {
         Section {
             VStack(alignment: .leading) {
-                Text(ea.assessment.name ?? "n")
-                Text(String(Int(ea.assessment.percentage)))
-                Text(String(ea.pred))
+                Text(predictionAssessment.assessment.name ?? "n")
+                Text(String(Int(predictionAssessment.assessment.percentage)))
+                Text(String(predictionAssessment.gradeEstimation))
                 Slider(value: $selection, in: 0...100)
-                
             }
             .onChange(of: selection) { value in
-                ea.pred = selection
+                predictionAssessment.gradeEstimation = selection
             }
             
         }
     }
 }
 
+
+// Main View
 struct GradePredictionView: View {
     @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
     @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
     
-    @State private var gradeAverage = 0.0
-    @State var selection = 0.0
-    @State private var EAs = [EA]()
-    @State private var sum = 0.0
+    @State private var completedGradesAverage = 0.0
+    @State private var pAssessments = [PredictionAssessment]()
+    @State private var predictionsSum = 0.0
     
-    var number = 0
     
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    Text("Average \(String(format: "%.2f", gradeAverage))")
+                    Text("Average \(String(format: "%.2f", completedGradesAverage))")
                 }
                 
                 Section {
-                    Text("Sum \(String(format: "%.2f", sum))")
+                    Text("Sum \(String(format: "%.2f", predictionsSum))")
                 }
                 
                 Section {
-                    Text("Prediction \(String(format: "%.2f", (sum + gradeAverage) / 120.0))")
+                    Text("Prediction \(String(format: "%.2f", (predictionsSum + completedGradesAverage) / 120.0))")
                 }
                 
-                ForEach($EAs) { a in
-                    EAView(ea: a, selection: 0.0)
-                        .onChange(of: EAs) { v in
+                ForEach($pAssessments) { a in
+                    PAView(predictionAssessment: a, selection: 0.0)
+                        .onChange(of: pAssessments) { v in
                             add()
                         }
                 }
@@ -74,7 +75,7 @@ struct GradePredictionView: View {
                 for module in modules {
                     for assessment in (assessments.filter { a in return module.code ?? "" == a.moduleCode ?? "" && a.grade == 0}) {
                         
-                        EAs.append(EA(assessment: assessment, module: module, pred: 0.0))
+                        pAssessments.append(PredictionAssessment(assessment: assessment, module: module, gradeEstimation: 0.0))
                         
                     }
                 }
@@ -84,9 +85,9 @@ struct GradePredictionView: View {
     }
     
     func add() {
-        sum = 0
-        for i in EAs {
-            sum += i.pred * Double(i.assessment.percentage) / 100.0 * Double(i.module.credits)
+        predictionsSum = 0
+        for i in pAssessments {
+            predictionsSum += i.gradeEstimation * Double(i.assessment.percentage) / 100.0 * Double(i.module.credits)
         }
     }
     
@@ -98,7 +99,7 @@ struct GradePredictionView: View {
             }
         }
         
-        gradeAverage = sum
+        completedGradesAverage = sum
     }
 }
 
