@@ -52,46 +52,37 @@ struct GradePredictionView: View {
         NavigationView {
             List {
                 Section {
-                    Text("Average \(String(format: "%.2f", completedGradesAverage))")
-                }
-                
-                Section {
-                    Text("Sum \(String(format: "%.2f", predictionsSum))")
-                }
-                
-                Section {
                     Text("Prediction \(String(format: "%.2f", (predictionsSum + completedGradesAverage) / 120.0))")
                 }
                 
                 ForEach($pAssessments) { a in
                     PAView(predictionAssessment: a, selection: 0.0)
                         .onChange(of: pAssessments) { v in
-                            add()
+                            addNewPredictions()
                         }
                 }
                 
             }
             .onAppear() {
+                // Populating pAssessments array with predictionAssessments
                 for module in modules {
                     for assessment in (assessments.filter { a in return module.code ?? "" == a.moduleCode ?? "" && a.grade == 0}) {
-                        
                         pAssessments.append(PredictionAssessment(assessment: assessment, module: module, gradeEstimation: 0.0))
-                        
                     }
                 }
-                updateAverage()
+                updateCompletedAverage()
             }
         }
     }
     
-    func add() {
+    func addNewPredictions() {
         predictionsSum = 0
-        for i in pAssessments {
-            predictionsSum += i.gradeEstimation * Double(i.assessment.percentage) / 100.0 * Double(i.module.credits)
+        for pAssessment in pAssessments {
+            predictionsSum += pAssessment.gradeEstimation * Double(pAssessment.assessment.percentage) / 100.0 * Double(pAssessment.module.credits)
         }
     }
     
-    func updateAverage() {
+    func updateCompletedAverage() {
         var sum = 0.0
         for module in modules {
             for assessment in (assessments.filter { a in return module.code ?? "" == a.moduleCode ?? ""}) {
