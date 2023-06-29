@@ -77,9 +77,3 @@ struct SettingsView: View {
         try? moc.save()
     }
 }
-
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsView()
-//    }
-//}

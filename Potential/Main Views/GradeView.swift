@@ -13,6 +13,7 @@ struct GradeView: View {
     @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
     
     @State private var gradeAverage = 0.0
+    @State private var showingPredictions = false
     
     var number = 0
     
@@ -49,6 +50,18 @@ struct GradeView: View {
                 updateAverage()
             }
             .navigationTitle("Grades")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingPredictions = true
+                    } label: {
+                        Text("Predict")
+                    }
+                }
+            }
+            .sheet(isPresented: $showingPredictions) {
+                GradePredictionView()
+            }
         }
     }
     
