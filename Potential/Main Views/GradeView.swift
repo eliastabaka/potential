@@ -47,15 +47,6 @@ struct GradeView: View {
                 updateAverage()
             }
             .navigationTitle("Grades")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingAdd = true
-                    } label: {
-                        Label("Add Grade", systemImage: "plus")
-                    }
-                }
-            }
         }
     }
     

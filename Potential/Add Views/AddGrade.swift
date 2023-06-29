@@ -14,13 +14,20 @@ struct AddGrade: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationView {
-            VStack {
+        Form {
+            Section {
                 Picker("Choose your grade", selection: $selectedNumber) {
                     ForEach(0..<101) {
                         Text("\($0)")
                     }
+                    .pickerStyle(.menu)
                 }
+            }
+            .onAppear() {
+                selectedNumber = Int(assessment.grade)
+            }
+            
+            Section {
                 Button("Save") {
                     assessment.grade = Int16(selectedNumber)
                     do {
@@ -31,13 +38,8 @@ struct AddGrade: View {
                     dismiss()
                 }
             }
-                .navigationTitle("Add grade entry")
         }
+        .navigationTitle("Update your grade")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
-
-//struct AddGrade_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddGrade()
-//    }
-//}
