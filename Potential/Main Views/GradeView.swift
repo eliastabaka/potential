@@ -20,7 +20,7 @@ struct GradeView: View {
         NavigationView {
             List {
                 Section {
-                    Text("Average \(gradeAverage)")
+                    Text("Average \(String(format: "%.2f", gradeAverage))")
                 }
                 
                 ForEach(modules) { module in
@@ -39,7 +39,9 @@ struct GradeView: View {
                             }
                         }
                     } header: {
-                        Text("\(module.code ?? "N/A")(\(module.credits))")
+                        Text("\(module.code ?? "N/A") \(module.name ?? "N/A")")
+                    } footer: {
+                        Text("\(module.credits) credits")
                     }
                 }
             }

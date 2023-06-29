@@ -39,7 +39,7 @@ struct AddGrade: View {
                 }
             }
         }
-        .navigationTitle("Update your grade")
+        .navigationTitle("\(assessment.name ?? "N/A")")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
