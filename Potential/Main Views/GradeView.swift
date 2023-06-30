@@ -10,8 +10,8 @@ import SwiftUI
 
 struct GradeView: View {
     @State private var showingAdd = false
-    @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
-    @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.code)]) var modules: FetchedResults<Module>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.moduleCode), SortDescriptor(\.name)]) var assessments: FetchedResults<Assessment>
     
     @State private var gradeAverage = 0.0
     @State private var showingPredictions = false
@@ -22,7 +22,14 @@ struct GradeView: View {
         NavigationView {
             List {
                 Section {
-                    Text("Average: \(String(format: "%.2f", gradeAverage))")
+                    HStack {
+                        Spacer()
+                        Text("Average: \(String(format: "%.2f", gradeAverage))")
+                            .font(.title2)
+                            .fontWeight(.medium)
+                        Spacer()
+                    }
+                    .padding()
                 }
                 
                 ForEach(modules) { module in
@@ -34,8 +41,24 @@ struct GradeView: View {
                                 VStack(alignment: .leading) {
 
                                     Text(assessment.name ?? "n")
-                                    Text(String(Int(assessment.percentage)))
-                                    Text(String(assessment.grade))
+                                    HStack {
+                                        Spacer()
+                                        Text("Weight: \(Int(assessment.percentage))%")
+                                        Spacer()
+                                        Spacer()
+                                        Spacer()
+                                        Spacer()
+                                        if assessment.grade == 0 {
+                                            Text("Grade: ?")
+                                                .foregroundColor(.red)
+                                        } else {
+                                            Text("Grade: \(assessment.grade)")
+                                        }
+                                        Spacer()
+                                        Spacer()
+                                        
+                                    }
+                                    .padding(0.5)
 
                                 }
                             }
