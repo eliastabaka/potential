@@ -60,7 +60,7 @@ struct GradeView: View {
                 }
             }
             .sheet(isPresented: $showingPredictions) {
-                GradePredictionView()
+                    GradePredictionView()
             }
         }
     }

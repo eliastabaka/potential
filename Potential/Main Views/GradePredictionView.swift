@@ -51,9 +51,6 @@ struct GradePredictionView: View {
     var body: some View {
         NavigationView {
             List {
-                Section {
-                    Text("Prediction \(String(format: "%.2f", (predictionsSum + completedGradesAverage) / 120.0))")
-                }
                 
                 ForEach($pAssessments) { a in
                     PAView(predictionAssessment: a, selection: 0.0)
@@ -71,6 +68,11 @@ struct GradePredictionView: View {
                     }
                 }
                 updateCompletedAverage()
+            }
+            .toolbar() {
+                ToolbarItem(placement: .principal) {
+                    Text("Prediction \(String(format: "%.2f", (predictionsSum + completedGradesAverage) / 120.0))")
+                }
             }
         }
     }
