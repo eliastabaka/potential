@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddAttendance: View {
+    let weeksArray = [1,2,3,4,5,6,7,8,9,10,11,12]
     @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
@@ -15,6 +16,8 @@ struct AddAttendance: View {
     @State private var duration = 0.0
     @State private var moduleSelection: Module?
     @State private var title = ""
+    @State private var week = 1
+    @State private var isAttended = false
     
     
     
@@ -30,9 +33,18 @@ struct AddAttendance: View {
                                 .tag(Optional(module))
                         }
                     }
-                    VStack {
-                        Stepper("Select duration", value: $duration, in: 0...8, step: 0.25)
-                        Text("\(duration) hours")
+                    Picker("Select Week", selection: $week) {
+                        ForEach(weeksArray, id: \.self) { week in
+                            Text("\(week)").tag(week)
+                        }
+                    }
+                    Toggle("Attended?", isOn: $isAttended)
+                    
+                    if isAttended {
+                        VStack {
+                            Stepper("Select duration", value: $duration, in: 0...8, step: 0.25)
+                            Text("\(duration) hours")
+                        }
                     }
                 }
                 
@@ -43,6 +55,8 @@ struct AddAttendance: View {
                         newAttendanceEntry.title = title
                         newAttendanceEntry.duration = duration
                         newAttendanceEntry.moduleCode = moduleSelection?.code ?? "N/A"
+                        newAttendanceEntry.week = Int16(week)
+                        newAttendanceEntry.attended = isAttended
                         
                         try? moc.save()
                         dismiss()

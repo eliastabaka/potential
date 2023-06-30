@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AttendanceView: View {
+    let weeks = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     @State private var showingAdd = false
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var attendanceEntries: FetchedResults<Attendance>
@@ -15,10 +16,24 @@ struct AttendanceView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(attendanceEntries) {
-                    Text(String($0.duration))
+                ForEach(weeks, id: \.self) { week in
+                    ForEach(attendanceEntries) { entry in
+                        if week == Int(entry.week) {
+                            Section {
+                                VStack(alignment: .leading) {
+                                    Text(String(entry.duration))
+                                    Text(entry.title ?? "NA")
+                                    Text(entry.moduleCode ?? "NA")
+                                    Text(String(entry.week))
+                                }
+                                .foregroundColor(entry.attended ? .green : .red)
+                            } header: {
+                                Text("Week \(entry.week)")
+                            }
+                        }
+                    }
+                    .onDelete(perform: deleteAttendance)
                 }
-                .onDelete(perform: deleteAttendance)
             }
             .navigationTitle("Attendance")
             .toolbar {
