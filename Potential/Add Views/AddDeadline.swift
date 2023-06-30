@@ -23,11 +23,11 @@ struct AddDeadline: View {
                 
                 Section {
                     TextField("Name", text: $name)
-                    DatePicker(selection: $date, in: Date.now..., displayedComponents: .date) {
+                    DatePicker(selection: $date, in: Date.now...) {
                         Text("Select a date")
                     }
                     Stepper("How much time you already worked on it", value: $duration, in: 0...100, step: 1)
-                    Text("\(duration)")
+                    Text("\(Int(duration))h")
                 }
                 
                 Section {

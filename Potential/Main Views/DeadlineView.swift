@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DeadlineView: View {
     @State private var showingAdd = false
-    @FetchRequest(sortDescriptors: []) var deadlines: FetchedResults<Deadline>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var deadlines: FetchedResults<Deadline>
     @Environment(\.managedObjectContext) var moc
     
     var body: some View {
@@ -21,7 +21,8 @@ struct DeadlineView: View {
                         VStack(alignment: .leading) {
                             Text(deadline.name ?? "")
                             Text(deadline.date?.formatted() ?? "NA")
-                            Text("Time worked on: \(deadline.duration)h")
+                            Text(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a")
+                            Text("Time worked on: \(String(format: "%.2f", deadline.duration))h")
                         }
                     }
                 }
