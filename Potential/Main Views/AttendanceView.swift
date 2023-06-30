@@ -37,6 +37,10 @@ struct AttendanceView: View {
             }
             .navigationTitle("Attendance")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingAdd = true

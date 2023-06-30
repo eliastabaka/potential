@@ -21,11 +21,18 @@ struct DeadlineView: View {
                         NavigationLink {
                             UpdateDeadline(deadline: deadline)
                         } label: {
-                            VStack(alignment: .leading) {
-                                Text(deadline.name ?? "")
-                                Text(deadline.date?.formatted() ?? "NA")
-                                Text(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a")
-                                Text("Time worked on: \(String(format: "%.2f", deadline.duration))h")
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(deadline.name ?? "")
+                                        .foregroundColor(.primary)
+                                        .fontWeight(.medium)
+                                    Text(deadline.date?.formatted() ?? "NA")
+                                        .foregroundColor(.secondary)
+                                    Text("Time worked on: \(String(format: "%.2f", deadline.duration))h")
+                                        .foregroundColor(.secondary)
+                                }
+                                Spacer()
+                                Text("\(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") days left")
                             }
                         }
                     }
@@ -34,6 +41,10 @@ struct DeadlineView: View {
             }
             .navigationTitle("Deadlines")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingAdd = true
