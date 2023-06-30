@@ -16,11 +16,15 @@ struct UpdateAttendance: View {
     @State private var title = ""
     @State private var week = 1
     @State private var isAttended = false
+    @State private var date = Date.now
     
     var body: some View {
         List {
             Section {
                 TextField("Title", text: $title)
+                DatePicker(selection: $date) {
+                    Text("Select a date")
+                }
                 Picker("Select Week", selection: $week) {
                     ForEach(weeksArray, id: \.self) { week in
                         Text("\(week)").tag(week)
@@ -34,6 +38,7 @@ struct UpdateAttendance: View {
                     attendance.title = title
                     attendance.week = Int16(week)
                     attendance.attended = isAttended
+                    attendance.date = date
                     
                     try? moc.save()
                     dismiss()
@@ -45,6 +50,7 @@ struct UpdateAttendance: View {
             title = attendance.title ?? "NA"
             week = Int(attendance.week)
             isAttended = attendance.attended
+            date = attendance.date ?? Date.now
         }
         .navigationTitle("\(attendance.title ?? "NA")")
         .navigationBarTitleDisplayMode(.inline)

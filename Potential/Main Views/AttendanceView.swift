@@ -11,34 +11,42 @@ struct AttendanceView: View {
     let weeks = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     @State private var showingAdd = false
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var attendanceEntries: FetchedResults<Attendance>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var attendanceEntries: FetchedResults<Attendance>
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(weeks, id: \.self) { week in
-                    ForEach(attendanceEntries) { entry in
-                        if week == Int(entry.week) {
-                            Section {
+                    
+                    Section {
+                        
+                        ForEach(attendanceEntries) { entry in
+                            if week == Int(entry.week) {
                                 NavigationLink {
                                     UpdateAttendance(attendance: entry)
                                 } label: {
-                                    
                                     VStack(alignment: .leading) {
-                                        Text(String(entry.duration))
                                         Text(entry.title ?? "NA")
-                                        Text(entry.moduleCode ?? "NA")
-                                        Text(String(entry.week))
+                                            .fontWeight(.medium)
+                                            .foregroundColor(entry.attended ? .green : .red)
+                                        Text(entry.date?.formatted() ?? "NA")
+                                            .foregroundColor(.secondary)
                                     }
-                                    .foregroundColor(entry.attended ? .green : .red)
+                                    
                                 }
-                            } header: {
-                                Text("Week \(entry.week)")
                             }
-                            
+                        }
+                        .onDelete(perform: deleteAttendance)
+                        
+                        
+                    } header: {
+                        if checkIfWeekExists(week: week) {
+                            Text("Week \(week)")
                         }
                     }
-                    .onDelete(perform: deleteAttendance)
+                    
+                    
+                    
                 }
             }
             .navigationTitle("Attendance")
@@ -68,6 +76,15 @@ struct AttendanceView: View {
             moc.delete(attendanceEntry)
         }
         try? moc.save()
+    }
+    
+    func checkIfWeekExists(week: Int) -> Bool {
+        for attendance in attendanceEntries {
+            if attendance.week == week {
+                return true
+            }
+        }
+        return false
     }
     
 }

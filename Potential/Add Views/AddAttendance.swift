@@ -13,11 +13,10 @@ struct AddAttendance: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
     
-    @State private var duration = 0.0
-    @State private var moduleSelection: Module?
     @State private var title = ""
     @State private var week = 1
     @State private var isAttended = false
+    @State private var date = Date.now
     
     
     
@@ -27,11 +26,8 @@ struct AddAttendance: View {
             List {
                 Section {
                     TextField("Title", text: $title)
-                    Picker("Select module", selection: $moduleSelection) {
-                        ForEach(modules) { module in
-                            Text(module.code!)
-                                .tag(Optional(module))
-                        }
+                    DatePicker(selection: $date) {
+                        Text("Select a date")
                     }
                     Picker("Select Week", selection: $week) {
                         ForEach(weeksArray, id: \.self) { week in
@@ -40,12 +36,6 @@ struct AddAttendance: View {
                     }
                     Toggle("Attended?", isOn: $isAttended)
                     
-                    if isAttended {
-                        VStack {
-                            Stepper("Select duration", value: $duration, in: 0...8, step: 0.25)
-                            Text("\(duration) hours")
-                        }
-                    }
                 }
                 
                 Section {
@@ -53,10 +43,9 @@ struct AddAttendance: View {
                         let newAttendanceEntry = Attendance(context: moc)
                         newAttendanceEntry.id = UUID()
                         newAttendanceEntry.title = title
-                        newAttendanceEntry.duration = duration
-                        newAttendanceEntry.moduleCode = moduleSelection?.code ?? "N/A"
                         newAttendanceEntry.week = Int16(week)
                         newAttendanceEntry.attended = isAttended
+                        newAttendanceEntry.date = date
                         
                         try? moc.save()
                         dismiss()
@@ -64,7 +53,6 @@ struct AddAttendance: View {
                     }
                 }
             }
-                .navigationTitle("Add new entry")
         }
     }
 }

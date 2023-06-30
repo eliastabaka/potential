@@ -9,9 +9,8 @@
     </entity>
     <entity name="Attendance" representedClassName="Attendance" syncable="YES" codeGenerationType="class">
         <attribute name="attended" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="moduleCode" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="week" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
