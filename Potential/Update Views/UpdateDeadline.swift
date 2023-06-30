@@ -1,13 +1,15 @@
 //
-//  AddDeadline.swift
+//  UpdateDeadline.swift
 //  Potential
 //
-//  Created by Elias Tabaka on 23/06/2023.
+//  Created by Elias Tabaka on 30/06/2023.
 //
 
 import SwiftUI
 
-struct AddDeadline: View {
+struct UpdateDeadline: View {
+    let deadline: Deadline
+    
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
     
@@ -15,10 +17,9 @@ struct AddDeadline: View {
     @State private var name = ""
     @State private var date = Date.now
     
+    
     var body: some View {
-        NavigationView {
             List {
-                
                 Section {
                     TextField("Name", text: $name)
                     DatePicker(selection: $date, in: Date.now...) {
@@ -30,8 +31,6 @@ struct AddDeadline: View {
                 
                 Section {
                     Button("Save") {
-                        let deadline = Deadline(context: moc)
-                        deadline.id = UUID()
                         deadline.name = name
                         deadline.date = date
                         deadline.duration = duration
@@ -42,13 +41,12 @@ struct AddDeadline: View {
                 }
                 
             }
-                .navigationTitle("Add deadline entry")
-        }
-    }
-}
-
-struct AddDeadline_Previews: PreviewProvider {
-    static var previews: some View {
-        AddDeadline()
+            .onAppear() {
+                duration = deadline.duration
+                name = deadline.name ?? "NA"
+                date = deadline.date ?? Date.now
+            }
+            .navigationTitle("\(deadline.name ?? "NA")")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }

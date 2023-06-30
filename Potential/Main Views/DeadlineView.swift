@@ -18,11 +18,15 @@ struct DeadlineView: View {
             List {
                 ForEach(deadlines) { deadline in
                     Section {
-                        VStack(alignment: .leading) {
-                            Text(deadline.name ?? "")
-                            Text(deadline.date?.formatted() ?? "NA")
-                            Text(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a")
-                            Text("Time worked on: \(String(format: "%.2f", deadline.duration))h")
+                        NavigationLink {
+                            UpdateDeadline(deadline: deadline)
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(deadline.name ?? "")
+                                Text(deadline.date?.formatted() ?? "NA")
+                                Text(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a")
+                                Text("Time worked on: \(String(format: "%.2f", deadline.duration))h")
+                            }
                         }
                     }
                 }
