@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct GradeView: View {
     @State private var showingAdd = false
     @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
@@ -21,7 +22,7 @@ struct GradeView: View {
         NavigationView {
             List {
                 Section {
-                    Text("Average \(String(format: "%.2f", gradeAverage))")
+                    Text("Average: \(String(format: "%.2f", gradeAverage))")
                 }
                 
                 ForEach(modules) { module in
