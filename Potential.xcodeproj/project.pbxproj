@@ -14,6 +14,7 @@
 		668EF7D82A4C7884001BCA7E /* AddAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7D72A4C7884001BCA7E /* AddAssessment.swift */; };
 		668EF7DA2A4E1B2A001BCA7E /* GradePredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7D92A4E1B2A001BCA7E /* GradePredictionView.swift */; };
 		668EF7DD2A4F6B4B001BCA7E /* UpdateDeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7DC2A4F6B4B001BCA7E /* UpdateDeadline.swift */; };
+		668EF7DF2A4F712F001BCA7E /* UpdateAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7DE2A4F712F001BCA7E /* UpdateAttendance.swift */; };
 		66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A1F2A36918800F57E1E /* PotentialApp.swift */; };
 		66B50A242A36918800F57E1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A232A36918800F57E1E /* Assets.xcassets */; };
 		66B50A272A36918800F57E1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A262A36918800F57E1E /* Preview Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		668EF7D72A4C7884001BCA7E /* AddAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssessment.swift; sourceTree = "<group>"; };
 		668EF7D92A4E1B2A001BCA7E /* GradePredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradePredictionView.swift; sourceTree = "<group>"; };
 		668EF7DC2A4F6B4B001BCA7E /* UpdateDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeadline.swift; sourceTree = "<group>"; };
+		668EF7DE2A4F712F001BCA7E /* UpdateAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAttendance.swift; sourceTree = "<group>"; };
 		66B50A1C2A36918800F57E1E /* Potential.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Potential.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B50A1F2A36918800F57E1E /* PotentialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialApp.swift; sourceTree = "<group>"; };
 		66B50A232A36918800F57E1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				668EF7DC2A4F6B4B001BCA7E /* UpdateDeadline.swift */,
+				668EF7DE2A4F712F001BCA7E /* UpdateAttendance.swift */,
 			);
 			path = "Update Views";
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				66B50A3F2A3748AC00F57E1E /* ModuleStudentsView.swift in Sources */,
 				668EF7D82A4C7884001BCA7E /* AddAssessment.swift in Sources */,
 				66B50A512A3C686800F57E1E /* GradeView.swift in Sources */,
+				668EF7DF2A4F712F001BCA7E /* UpdateAttendance.swift in Sources */,
 				66B50A482A3A162D00F57E1E /* ViewModules.swift in Sources */,
 				66B50A4B2A3C464F00F57E1E /* Potential.xcdatamodeld in Sources */,
 				66B50A552A3C6A6200F57E1E /* DeadlineView.swift in Sources */,

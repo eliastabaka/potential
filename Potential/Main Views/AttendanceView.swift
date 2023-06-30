@@ -20,16 +20,22 @@ struct AttendanceView: View {
                     ForEach(attendanceEntries) { entry in
                         if week == Int(entry.week) {
                             Section {
-                                VStack(alignment: .leading) {
-                                    Text(String(entry.duration))
-                                    Text(entry.title ?? "NA")
-                                    Text(entry.moduleCode ?? "NA")
-                                    Text(String(entry.week))
+                                NavigationLink {
+                                    UpdateAttendance(attendance: entry)
+                                } label: {
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(String(entry.duration))
+                                        Text(entry.title ?? "NA")
+                                        Text(entry.moduleCode ?? "NA")
+                                        Text(String(entry.week))
+                                    }
+                                    .foregroundColor(entry.attended ? .green : .red)
                                 }
-                                .foregroundColor(entry.attended ? .green : .red)
                             } header: {
                                 Text("Week \(entry.week)")
                             }
+                            
                         }
                     }
                     .onDelete(perform: deleteAttendance)
@@ -52,17 +58,18 @@ struct AttendanceView: View {
             .sheet(isPresented: $showingAdd) {
                 AddAttendance()
             }
+            
         }
     }
+    
     func deleteAttendance(at offsets: IndexSet) {
         for offset in offsets {
             let attendanceEntry = attendanceEntries[offset]
             moc.delete(attendanceEntry)
         }
-        
         try? moc.save()
     }
-
+    
 }
 
 struct AttendanceView_Previews: PreviewProvider {
