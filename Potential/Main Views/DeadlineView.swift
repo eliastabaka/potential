@@ -9,23 +9,29 @@ import SwiftUI
 
 struct DeadlineView: View {
     @State private var showingAdd = false
+    @FetchRequest(sortDescriptors: []) var deadlines: FetchedResults<Deadline>
     
     var body: some View {
         NavigationView {
-            Text("Deadline View")
-                .navigationTitle("Deadlines")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            showingAdd = true
-                        } label: {
-                            Label("Add Deadline", systemImage: "plus")
-                        }
+            
+            List {
+                ForEach(deadlines) { deadline in
+                    Text(deadline.name ?? "")
+                }
+            }
+            .navigationTitle("Deadlines")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingAdd = true
+                    } label: {
+                        Label("Add Deadline", systemImage: "plus")
                     }
                 }
-                .sheet(isPresented: $showingAdd) {
-                    AddDeadline()
-                }
+            }
+            .sheet(isPresented: $showingAdd) {
+                AddDeadline()
+            }
         }
         
     }

@@ -8,9 +8,42 @@
 import SwiftUI
 
 struct AddDeadline: View {
+    @State private var date = Date.now
+    
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var duration = 0.0
+    @State private var name = ""
+    
+    
     var body: some View {
         NavigationView {
-            Text("Add deadline")
+            List {
+                
+                Section {
+                    TextField("Name", text: $name)
+                    DatePicker(selection: $date, in: Date.now..., displayedComponents: .date) {
+                        Text("Select a date")
+                    }
+                    Stepper("How much time you already worked on it", value: $duration, in: 0...100, step: 1)
+                    Text("\(duration)")
+                }
+                
+                Section {
+                    Button("Save") {
+                        let deadline = Deadline(context: moc)
+                        deadline.id = UUID()
+                        deadline.name = name
+                        deadline.date = date
+                        deadline.duration = duration
+                        
+                        try? moc.save()
+                        dismiss()
+                    }
+                }
+                
+            }
                 .navigationTitle("Add deadline entry")
         }
     }
