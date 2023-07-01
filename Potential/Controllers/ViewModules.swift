@@ -45,7 +45,7 @@ class ViewModules: ObservableObject {
         let db = Firestore.firestore()
         
         // Read the documents at a specific path
-        db.collection("modules").getDocuments { snapshot, error in
+        db.collection("modules").order(by: "code").getDocuments { snapshot, error in
             
             // Check for errors
             if error == nil {
