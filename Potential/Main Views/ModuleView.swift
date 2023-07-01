@@ -19,7 +19,10 @@ struct ModuleView: View {
                     NavigationLink {
                         ModuleStudentsView(username: $username, email: $email, module: module)
                     } label: {
-                        Text(module.name)
+                        VStack(alignment: .leading) {
+                            Text(module.code)
+                            Text(module.name)
+                        }
                     }
                 }
             }
