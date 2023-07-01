@@ -11,6 +11,8 @@ struct HomeView: View {
     @State private var showingSettings = false
     @Binding var name: String
     @Binding var email: String
+    @Binding var startDateStorage: String
+    @Binding var endDateStorage: String
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var deadlines: FetchedResults<Deadline>
     
     var body: some View {
@@ -37,7 +39,7 @@ struct HomeView: View {
                     HStack {
                         Text("Academic year completed in")
                         Spacer()
-                        Text("46%")
+                        Text("\(String(format: "%.2f", yearCompletion()))%")
                     }
                 } header: {
                     Text("Statistics")
@@ -78,8 +80,21 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showingSettings) {
-                SettingsView(name: $name, email: $email)
+                SettingsView(name: $name, email: $email, startDateStorage: $startDateStorage, endDateStorage: $endDateStorage)
             }
         }
+    }
+    
+    func yearCompletion() -> Double {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        let start = dateFormatter.date(from: startDateStorage) ?? Date.now
+        let end = dateFormatter.date(from: endDateStorage) ?? Date.now
+        let today = Date.now
+        let bigDifference: Double = Double(Calendar.current.dateComponents([.day], from: start, to: end ).day?.formatted() ?? "1.0") ?? 1.0
+        let smallDifference: Double = Double(Calendar.current.dateComponents([.day], from: start, to: Date.now ).day?.formatted() ?? "1.0") ?? 1.0
+        
+        return (smallDifference / bigDifference) * 100
+        
     }
 }

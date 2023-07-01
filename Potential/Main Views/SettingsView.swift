@@ -12,6 +12,10 @@ struct SettingsView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.code)]) var modules: FetchedResults<Module>
     @Binding var name: String
     @Binding var email: String
+    @Binding var startDateStorage: String
+    @Binding var endDateStorage: String
+    @State var startDate = Date.now
+    @State var endDate = Date.now
     
     var body: some View {
         NavigationView {
@@ -23,6 +27,29 @@ struct SettingsView: View {
                             .foregroundColor(.secondary)
                     } header: {
                         Text("Personal details")
+                    }
+                    
+                    Section {
+                        DatePicker(selection: $startDate, displayedComponents: .date) {
+                            Text("Start Date")
+                        }
+                        .onChange(of: startDate) {v in
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateStyle = .short
+                            startDateStorage = dateFormatter.string(from: startDate)
+                        }
+                                  
+                        DatePicker(selection: $endDate, displayedComponents: .date) {
+                            Text("End Date")
+                        }
+                        .onChange(of: endDate) {v in
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateStyle = .short
+                            endDateStorage = dateFormatter.string(from: v)
+                        }
+                        
+                    } header: {
+                        Text("Semester Dates")
                     }
                     
                     Section {
@@ -48,6 +75,13 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear() {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .short
+                print(startDateStorage)
+                startDate = dateFormatter.date(from: startDateStorage) ?? (Date.now)
+                endDate = dateFormatter.date(from: endDateStorage) ?? Date.now
+            }
         }
     }
     

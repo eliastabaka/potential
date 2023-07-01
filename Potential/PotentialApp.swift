@@ -8,6 +8,7 @@
 
 import SwiftUI
 import FirebaseCore
+import Foundation
 
 // Firebase configuration
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -28,12 +29,14 @@ struct PotentialApp: App {
     
     @AppStorage("username") var studentName = "Elias Tabaka"
     @AppStorage("email") var studentEmailAddress = "mmtabaka1@sheffield.ac.uk"
+    @AppStorage("startDate") var startDateStorage = DateFormatter().string(from: Date.now)
+    @AppStorage("endDate") var endDateStorage = DateFormatter().string(from: Date.now)
     
     
     var body: some Scene {
         WindowGroup {
             TabView {
-                HomeView(name: $studentName, email: $studentEmailAddress)
+                HomeView(name: $studentName, email: $studentEmailAddress, startDateStorage: $startDateStorage, endDateStorage: $endDateStorage)
                     .tabItem {
                         Label("Menu", systemImage: "list.dash")
                     }
