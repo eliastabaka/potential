@@ -45,7 +45,7 @@ class ViewStudent: ObservableObject {
         let db = Firestore.firestore()
         
         // Read the documents at a specific path
-        db.collection("modules").document(moduleDocumentId).collection("students").getDocuments { snapshot, error in
+        db.collection("modules").document(moduleDocumentId).collection("students").order(by: "name").getDocuments { snapshot, error in
             
             // Check for errors
             if error == nil {
