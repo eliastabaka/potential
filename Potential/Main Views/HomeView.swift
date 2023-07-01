@@ -15,6 +15,8 @@ struct HomeView: View {
     @Binding var endDateStorage: String
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var deadlines: FetchedResults<Deadline>
     @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
+    @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationView {
@@ -23,7 +25,7 @@ struct HomeView: View {
                     HStack {
                         Text("Grade average")
                         Spacer()
-                        Text("55.5%")
+                        Text("\(String(format: "%.2f", gradeAverage()))%")
                     }
                     HStack {
                         Text("Attendance")
@@ -47,16 +49,6 @@ struct HomeView: View {
                 }
                 
                 Section {
-                    HStack {
-                        Text("Your name is visible in")
-                        Spacer()
-                        Text("4 modules")
-                    }
-                } header: {
-                    Text("Visibility")
-                }
-                
-                Section {
                     ForEach(deadlines) { deadline in
                         HStack {
                             Text(deadline.name ?? "")
@@ -70,6 +62,7 @@ struct HomeView: View {
                     Text("Deadlines")
                 }
             }
+
             .navigationTitle("Potential")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -91,7 +84,6 @@ struct HomeView: View {
         dateFormatter.dateStyle = .short
         let start = dateFormatter.date(from: startDateStorage) ?? Date.now
         let end = dateFormatter.date(from: endDateStorage) ?? Date.now
-        let today = Date.now
         let bigDifference: Double = Double(Calendar.current.dateComponents([.day], from: start, to: end ).day?.formatted() ?? "1.0") ?? 1.0
         let smallDifference: Double = Double(Calendar.current.dateComponents([.day], from: start, to: Date.now ).day?.formatted() ?? "1.0") ?? 1.0
         
@@ -107,5 +99,16 @@ struct HomeView: View {
             }
         }
         return counter
+    }
+    
+    func gradeAverage() -> Double {
+        var sum = 0.0
+        for module in modules {
+            for assessment in (assessments.filter { a in return module.code ?? "" == a.moduleCode ?? ""}) {
+                sum += Double(assessment.grade) * Double(assessment.percentage) / 100.0 * Double(module.credits)
+            }
+        }
+        
+        return sum / 120.0
     }
 }
