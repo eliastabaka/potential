@@ -78,7 +78,6 @@ struct SettingsView: View {
             .onAppear() {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .short
-                print(startDateStorage)
                 startDate = dateFormatter.date(from: startDateStorage) ?? (Date.now)
                 endDate = dateFormatter.date(from: endDateStorage) ?? Date.now
             }

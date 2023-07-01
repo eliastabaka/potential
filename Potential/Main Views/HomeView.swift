@@ -14,6 +14,7 @@ struct HomeView: View {
     @Binding var startDateStorage: String
     @Binding var endDateStorage: String
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var deadlines: FetchedResults<Deadline>
+    @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
     
     var body: some View {
         NavigationView {
@@ -33,7 +34,7 @@ struct HomeView: View {
                     HStack {
                         Text("Assessments to complete")
                         Spacer()
-                        Text("6")
+                        Text("\(assessmentsToComplete())")
                     }
                     
                     HStack {
@@ -96,5 +97,15 @@ struct HomeView: View {
         
         return (smallDifference / bigDifference) * 100
         
+    }
+    
+    func assessmentsToComplete() -> Int {
+        var counter = 0
+        for assessment in assessments {
+            if assessment.grade == 0 {
+                counter += 1
+            }
+        }
+        return counter
     }
 }
