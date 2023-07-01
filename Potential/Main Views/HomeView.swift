@@ -16,7 +16,7 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var deadlines: FetchedResults<Deadline>
     @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
     @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @FetchRequest(sortDescriptors: []) var attendanceEntries: FetchedResults<Attendance>
     
     var body: some View {
         NavigationView {
@@ -30,7 +30,7 @@ struct HomeView: View {
                     HStack {
                         Text("Attendance")
                         Spacer()
-                        Text("89%")
+                        Text("\(String(format: "%.2f", Attendance()))%")
                     }
                     
                     HStack {
@@ -110,5 +110,19 @@ struct HomeView: View {
         }
         
         return sum / 120.0
+    }
+    
+    func Attendance() -> Double {
+        var attendedSum = 0.0
+        for i in attendanceEntries {
+            if i.attended {
+                attendedSum += 1.0
+            }
+        }
+        if attendanceEntries.count == 0 {
+            return 0.0
+        }
+        
+        return attendedSum * 100 / Double(attendanceEntries.count)
     }
 }
