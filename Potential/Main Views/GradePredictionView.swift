@@ -25,6 +25,7 @@ struct PAView : View {
         Section {
             VStack(alignment: .leading) {
                 Text(predictionAssessment.assessment.name ?? "n")
+                Text(predictionAssessment.module.name ?? "NA")
                 Text(String(Int(predictionAssessment.assessment.percentage)))
                 Text(String(predictionAssessment.gradeEstimation))
                 Slider(value: $selection, in: 0...100)
