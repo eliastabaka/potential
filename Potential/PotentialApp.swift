@@ -27,8 +27,8 @@ struct PotentialApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var dataController = DataController()
     
-    @AppStorage("username") var studentName = "Elias Tabaka"
-    @AppStorage("email") var studentEmailAddress = "mmtabaka1@sheffield.ac.uk"
+    @AppStorage("username") var studentName = "Test User"
+    @AppStorage("email") var studentEmailAddress = "test@sheffield.ac.uk"
     @AppStorage("startDate") var startDateStorage = DateFormatter().string(from: Date.now)
     @AppStorage("endDate") var endDateStorage = DateFormatter().string(from: Date.now)
     
@@ -58,7 +58,7 @@ struct PotentialApp: App {
                 
                 ModuleView(username: $studentName, email: $studentEmailAddress)
                     .tabItem {
-                        Label("Groups", systemImage: "person.3.fill")
+                        Label("Student Space", systemImage: "person.3.fill")
                     }
             }
             .environment(\.managedObjectContext, dataController.container.viewContext)
