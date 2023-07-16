@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showingSettings = false
+    @State private var gettingStarted = true
     @Binding var name: String
     @Binding var email: String
     @Binding var startDateStorage: String
@@ -21,6 +22,24 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             Form {
+                if gettingStarted {
+                    Section{
+                        Text("Add all of your modules in Settings -> Modules")
+                            .font(.footnote)
+                        Text("For each module add relevant assessments")
+                            .font(.footnote)
+                        Text("Keep track of your attendance in Attendance tab")
+                            .font(.footnote)
+                        Text("Keep track of your grades in Grades tab")
+                            .font(.footnote)
+
+
+                    } header: {
+                        Text("Getting started")
+                    }
+                }
+                        
+                
                 Section {
                     HStack {
                         Text("Grade average")
@@ -38,11 +57,16 @@ struct HomeView: View {
                         Spacer()
                         Text("\(assessmentsToComplete())")
                     }
+                    if yearCompletion().isNaN {
                     
-                    HStack {
-                        Text("Academic year completed in")
-                        Spacer()
-                        Text("\(String(format: "%.2f", yearCompletion()))%")
+                        
+                            Text("Add your semester dates in settings")
+                        } else {
+                            HStack {
+                            Text("Academic year completed in")
+                            Spacer()
+                            Text("\(String(format: "%.2f", yearCompletion()))%")
+                        }
                     }
                 } header: {
                     Text("Statistics")

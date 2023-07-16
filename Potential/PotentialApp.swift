@@ -60,6 +60,10 @@ struct PotentialApp: App {
                     .tabItem {
                         Label("Student Space", systemImage: "person.3.fill")
                     }
+                DepartmentTopicsView()
+                    .tabItem {
+                        Label("Test", systemImage: "person.3.fill")
+                    }
             }
             .environment(\.managedObjectContext, dataController.container.viewContext)
             
