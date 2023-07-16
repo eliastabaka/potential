@@ -59,7 +59,7 @@ struct HomeView: View {
                         }
                     }
                 } header: {
-                    Text("Deadlines")
+                    Text(deadlines.isEmpty ? "Your deadlines will appear here" : "Deadlines")
                 }
             }
 
