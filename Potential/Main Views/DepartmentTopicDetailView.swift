@@ -14,12 +14,23 @@ struct DepartmentTopicDetailView: View {
     
     var body: some View {
         Form {
-            Text(topic.title)
-            Text(topic.description)
-            Text(topic.author)
-            Button("Update") {
-                topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
-                dismiss()
+            Section {
+                Text(topic.title)
+                Text(topic.description)
+                Text(topic.author)
+                Button("Vote up") {
+                    topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
+                    dismiss()
+                }
+                
+                Button("Vote down") {
+                    topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes - 1)
+                    dismiss()
+                }
+            }
+            
+            Section {
+                
             }
         }
     }

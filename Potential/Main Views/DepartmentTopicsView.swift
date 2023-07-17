@@ -33,6 +33,16 @@ struct DepartmentTopicsView: View {
             topicsModel.getData()
         }
     }
+    
+    func countVotes(_ voters: [Vote]) -> Int {
+        var counter = 0
+        
+        for voter in voters {
+            counter += voter.value
+        }
+        
+        return counter
+    }
 }
 
 struct DepartmentTopicsView_Previews: PreviewProvider {

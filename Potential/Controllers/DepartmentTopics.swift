@@ -21,10 +21,6 @@ class DepartmentTopics: ObservableObject {
         topic.updateData([field: newValue])
     }
     
-    func getVotersList(topicId: String) {
-        
-    }
-    
     
     func getData() {
         
@@ -45,9 +41,10 @@ class DepartmentTopics: ObservableObject {
                         
                         // Get all the documents and create Todos
                         self.topics = snapshot.documents.map { d in
+                            //print(votes)
                             
                             // Create a Todo item for each document returned
-                            return Topic(id: d.documentID, title: d["title"] as? String ?? "", description: d["description"] as? String ?? "", votes: d["votes"] as? Int ?? -100, author: d["author"] as? String ?? "")
+                            return Topic(id: d.documentID, title: d["title"] as? String ?? "", description: d["description"] as? String ?? "", votes: d["votes"] as? Int ?? 0, author: d["author"] as? String ?? "")
                         }
                     }
                 }
@@ -57,6 +54,9 @@ class DepartmentTopics: ObservableObject {
                 }
             }
         }
+        
+        
+        
         
     }
 

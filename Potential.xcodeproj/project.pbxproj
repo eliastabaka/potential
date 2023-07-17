@@ -12,6 +12,7 @@
 		66800FE02A649E2300BEC557 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FDF2A649E2300BEC557 /* Comment.swift */; };
 		66800FE22A64A05200BEC557 /* DepartmentTopicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FE12A64A05200BEC557 /* DepartmentTopicsView.swift */; };
 		66800FE42A64A52E00BEC557 /* DepartmentTopicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FE32A64A52E00BEC557 /* DepartmentTopicDetailView.swift */; };
+		66800FE62A64B2D800BEC557 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FE52A64B2D800BEC557 /* Vote.swift */; };
 		668EF7C52A4570FC001BCA7E /* AddAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7C42A4570FC001BCA7E /* AddAttendance.swift */; };
 		668EF7C72A45734E001BCA7E /* AddDeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7C62A45734E001BCA7E /* AddDeadline.swift */; };
 		668EF7C92A457355001BCA7E /* AddGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7C82A457355001BCA7E /* AddGrade.swift */; };
@@ -50,6 +51,7 @@
 		66800FDF2A649E2300BEC557 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		66800FE12A64A05200BEC557 /* DepartmentTopicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentTopicsView.swift; sourceTree = "<group>"; };
 		66800FE32A64A52E00BEC557 /* DepartmentTopicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentTopicDetailView.swift; sourceTree = "<group>"; };
+		66800FE52A64B2D800BEC557 /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		668EF7C42A4570FC001BCA7E /* AddAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAttendance.swift; sourceTree = "<group>"; };
 		668EF7C62A45734E001BCA7E /* AddDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeadline.swift; sourceTree = "<group>"; };
 		668EF7C82A457355001BCA7E /* AddGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGrade.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				668EF7D52A4C77EE001BCA7E /* AssessmentExt.swift */,
 				66800FDD2A649DBD00BEC557 /* Topic.swift */,
 				66800FDF2A649E2300BEC557 /* Comment.swift */,
+				66800FE52A64B2D800BEC557 /* Vote.swift */,
 			);
 			path = "External Models";
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				66B50A462A3A15BA00F57E1E /* ModuleView.swift in Sources */,
 				66B50A4D2A3C466600F57E1E /* DataController.swift in Sources */,
 				66B50A432A374A9800F57E1E /* ViewStudent.swift in Sources */,
+				66800FE62A64B2D800BEC557 /* Vote.swift in Sources */,
 				66B50A3F2A3748AC00F57E1E /* ModuleStudentsView.swift in Sources */,
 				668EF7D82A4C7884001BCA7E /* AddAssessment.swift in Sources */,
 				66800FE22A64A05200BEC557 /* DepartmentTopicsView.swift in Sources */,
