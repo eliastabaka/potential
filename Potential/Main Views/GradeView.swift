@@ -21,15 +21,17 @@ struct GradeView: View {
     var body: some View {
         NavigationView {
             List {
-                Section {
-                    HStack {
-                        Spacer()
-                        Text("Average: \(String(format: "%.2f", gradeAverage))")
-                            .font(.title2)
-                            .fontWeight(.medium)
-                        Spacer()
+                if !assessments.isEmpty {
+                    Section {
+                        HStack {
+                            Spacer()
+                            Text("Average: \(String(format: "%.2f", gradeAverage))")
+                                .font(.title2)
+                                .fontWeight(.medium)
+                            Spacer()
+                        }
+                        .padding()
                     }
-                    .padding()
                 }
                 
                 ForEach(modules) { module in

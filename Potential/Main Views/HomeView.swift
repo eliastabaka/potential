@@ -14,6 +14,7 @@ struct HomeView: View {
     @Binding var email: String
     @Binding var startDateStorage: String
     @Binding var endDateStorage: String
+    @ObservedObject var topicsModel = DepartmentTopics()
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var deadlines: FetchedResults<Deadline>
     @FetchRequest(sortDescriptors: []) var assessments: FetchedResults<Assessment>
     @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
@@ -32,13 +33,15 @@ struct HomeView: View {
                             .font(.footnote)
                         Text("Keep track of your grades in Grades tab")
                             .font(.footnote)
-
-
+                        Text("Find study partners and engage in university life in Student Space")
+                            .font(.footnote)
+                        
+                        
                     } header: {
                         Text("Getting started")
                     }
                 }
-                        
+                
                 
                 Section {
                     HStack {
@@ -58,11 +61,12 @@ struct HomeView: View {
                         Text("\(assessmentsToComplete())")
                     }
                     if yearCompletion().isNaN {
-                    
                         
-                            Text("Add your semester dates in settings")
-                        } else {
-                            HStack {
+                        
+                        Text("Semester dates not specified.")
+                            .foregroundColor(.red)
+                    } else {
+                        HStack {
                             Text("Academic year completed in")
                             Spacer()
                             Text("\(String(format: "%.2f", yearCompletion()))%")
@@ -70,6 +74,20 @@ struct HomeView: View {
                     }
                 } header: {
                     Text("Statistics")
+                }
+                
+                Section {
+                    ForEach(0..<3) { index in
+                        HStack {
+                            if index < topicsModel.topics.count {
+                                Text(topicsModel.topics[index].title)
+                                Spacer()
+                                Text("\(topicsModel.topics[index].votes)")
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Trending topics")
                 }
                 
                 Section {
@@ -86,7 +104,9 @@ struct HomeView: View {
                     Text(deadlines.isEmpty ? "Your deadlines will appear here" : "Deadlines")
                 }
             }
-
+            .onAppear() {
+                topicsModel.getData()
+            }
             .navigationTitle("Potential")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -99,6 +119,9 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showingSettings) {
                 SettingsView(name: $name, email: $email, startDateStorage: $startDateStorage, endDateStorage: $endDateStorage)
+            }
+            .refreshable {
+                topicsModel.getData()
             }
         }
     }
