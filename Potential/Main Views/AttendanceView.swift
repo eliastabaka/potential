@@ -11,62 +11,67 @@ struct AttendanceView: View {
     let weeks = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     @State private var showingAdd = false
     @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date)]) var attendanceEntries: FetchedResults<Attendance>
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(weeks, id: \.self) { week in
-                    
-                    Section {
+        if !networkMonitor.isConnected {
+            Text("No internet")
+        } else {
+            NavigationView {
+                List {
+                    ForEach(weeks, id: \.self) { week in
                         
-                        ForEach(attendanceEntries) { entry in
-                            if week == Int(entry.week) {
-                                NavigationLink {
-                                    UpdateAttendance(attendance: entry)
-                                } label: {
-                                    VStack(alignment: .leading) {
-                                        Text(entry.title ?? "NA")
-                                            .fontWeight(.medium)
-                                            .foregroundColor(entry.attended ? .green : .red)
-                                        Text(entry.date?.formatted() ?? "NA")
-                                            .foregroundColor(.secondary)
+                        Section {
+                            
+                            ForEach(attendanceEntries) { entry in
+                                if week == Int(entry.week) {
+                                    NavigationLink {
+                                        UpdateAttendance(attendance: entry)
+                                    } label: {
+                                        VStack(alignment: .leading) {
+                                            Text(entry.title ?? "NA")
+                                                .fontWeight(.medium)
+                                                .foregroundColor(entry.attended ? .green : .red)
+                                            Text(entry.date?.formatted() ?? "NA")
+                                                .foregroundColor(.secondary)
+                                        }
+                                        
                                     }
-                                    
                                 }
                             }
+                            .onDelete(perform: deleteAttendance)
+                            
+                            
+                        } header: {
+                            if checkIfWeekExists(week: week) {
+                                Text("Week \(week)")
+                            }
                         }
-                        .onDelete(perform: deleteAttendance)
                         
                         
-                    } header: {
-                        if checkIfWeekExists(week: week) {
-                            Text("Week \(week)")
-                        }
+                        
+                    }
+                }
+                .navigationTitle("Attendance")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
                     }
                     
-                    
-                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingAdd = true
+                        } label: {
+                            Label("Add Attendance", systemImage: "plus")
+                        }
+                    }
                 }
-            }
-            .navigationTitle("Attendance")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
+                .sheet(isPresented: $showingAdd) {
+                    AddAttendance()
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingAdd = true
-                    } label: {
-                        Label("Add Attendance", systemImage: "plus")
-                    }
-                }
             }
-            .sheet(isPresented: $showingAdd) {
-                AddAttendance()
-            }
-            
         }
     }
     

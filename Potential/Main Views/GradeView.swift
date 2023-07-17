@@ -11,6 +11,7 @@ import SwiftUI
 struct GradeView: View {
     @State private var showingAdd = false
     @FetchRequest(sortDescriptors: [SortDescriptor(\.code)]) var modules: FetchedResults<Module>
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @FetchRequest(sortDescriptors: [SortDescriptor(\.moduleCode), SortDescriptor(\.name)]) var assessments: FetchedResults<Assessment>
     
     @State private var gradeAverage = 0.0
@@ -19,74 +20,78 @@ struct GradeView: View {
     var number = 0
     
     var body: some View {
-        NavigationView {
-            List {
-                if !assessments.isEmpty {
-                    Section {
-                        HStack {
-                            Spacer()
-                            Text("Average: \(String(format: "%.2f", gradeAverage))")
-                                .font(.title2)
-                                .fontWeight(.medium)
-                            Spacer()
+        if !networkMonitor.isConnected {
+            Text("No internet")
+        } else {
+            NavigationView {
+                List {
+                    if !assessments.isEmpty {
+                        Section {
+                            HStack {
+                                Spacer()
+                                Text("Average: \(String(format: "%.2f", gradeAverage))")
+                                    .font(.title2)
+                                    .fontWeight(.medium)
+                                Spacer()
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
-                }
-                
-                ForEach(modules) { module in
-                    Section {
-                        ForEach(assessments.filter { a in return module.code ?? "" == a.moduleCode ?? ""}) { assessment in
-                            NavigationLink {
-                                AddGrade(assessment: assessment)
-                            } label: {
-                                VStack(alignment: .leading) {
-
-                                    Text(assessment.name ?? "n")
-                                    HStack {
-                                        Spacer()
-                                        Text("Weight: \(Int(assessment.percentage))%")
-                                        Spacer()
-                                        Spacer()
-                                        Spacer()
-                                        Spacer()
-                                        if assessment.grade == 0 {
-                                            Text("Grade: ?")
-                                                .foregroundColor(.red)
-                                        } else {
-                                            Text("Grade: \(assessment.grade)")
+                    
+                    ForEach(modules) { module in
+                        Section {
+                            ForEach(assessments.filter { a in return module.code ?? "" == a.moduleCode ?? ""}) { assessment in
+                                NavigationLink {
+                                    AddGrade(assessment: assessment)
+                                } label: {
+                                    VStack(alignment: .leading) {
+                                        
+                                        Text(assessment.name ?? "n")
+                                        HStack {
+                                            Spacer()
+                                            Text("Weight: \(Int(assessment.percentage))%")
+                                            Spacer()
+                                            Spacer()
+                                            Spacer()
+                                            Spacer()
+                                            if assessment.grade == 0 {
+                                                Text("Grade: ?")
+                                                    .foregroundColor(.red)
+                                            } else {
+                                                Text("Grade: \(assessment.grade)")
+                                            }
+                                            Spacer()
+                                            Spacer()
+                                            
                                         }
-                                        Spacer()
-                                        Spacer()
+                                        .padding(0.5)
                                         
                                     }
-                                    .padding(0.5)
-
                                 }
                             }
+                        } header: {
+                            Text("\(module.code ?? "N/A") \(module.name ?? "N/A")")
+                        } footer: {
+                            Text("\(module.credits) credits")
                         }
-                    } header: {
-                        Text("\(module.code ?? "N/A") \(module.name ?? "N/A")")
-                    } footer: {
-                        Text("\(module.credits) credits")
                     }
                 }
-            }
-            .onAppear() {
-                updateAverage()
-            }
-            .navigationTitle("Grades")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingPredictions = true
-                    } label: {
-                        Text("Predict")
+                .onAppear() {
+                    updateAverage()
+                }
+                .navigationTitle("Grades")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingPredictions = true
+                        } label: {
+                            Text("Predict")
+                        }
                     }
                 }
-            }
-            .sheet(isPresented: $showingPredictions) {
+                .sheet(isPresented: $showingPredictions) {
                     GradePredictionView()
+                }
             }
         }
     }

@@ -23,136 +23,140 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: []) var attendanceEntries: FetchedResults<Attendance>
     
     var body: some View {
-        NavigationView {
-            Form {
-                
-                // Getting started Hints
-                if gettingStarted {
-                    Section{
-                        Text("Add all of your modules in Settings -> Modules")
-                            .font(.footnote)
-                            .foregroundColor(networkMonitor.isConnected ? .green : .red)
-                        Text("For each module add relevant assessments")
-                            .font(.footnote)
-                        Text("Keep track of your attendance in Attendance tab")
-                            .font(.footnote)
-                        Text("Keep track of your grades in Grades tab")
-                            .font(.footnote)
-                        Text("Find study partners and engage in university life in Student Space")
-                            .font(.footnote)
-                        
-                        
-                    } header: {
-                        Text("Getting started")
-                    }
-                }
-                
-                
-                // Statistics
-                Section {
-                    HStack {
-                        Text("Grade average")
-                        Spacer()
-                        Text("\(String(format: "%.2f", gradeAverage()))%")
-                    }
-                    HStack {
-                        Text("Attendance")
-                        Spacer()
-                        Text("\(String(format: "%.2f", Attendance()))%")
-                    }
+        if !networkMonitor.isConnected {
+            Text("No internet")
+        } else {
+            NavigationView {
+                Form {
                     
-                    HStack {
-                        Text("Assessments to complete")
-                        Spacer()
-                        Text("\(assessmentsToComplete())")
-                    }
-                    
-                    if !(yearCompletion().isNaN || yearCompletion().isInfinite) {
-                        HStack {
-                            Text("Academic year completed in")
-                            Spacer()
-                            Text("\(String(format: "%.2f", yearCompletion()))%")
+                    // Getting started Hints
+                    if gettingStarted {
+                        Section{
+                            Text("Add all of your modules in Settings -> Modules")
+                                .font(.footnote)
+                                .foregroundColor(networkMonitor.isConnected ? .green : .red)
+                            Text("For each module add relevant assessments")
+                                .font(.footnote)
+                            Text("Keep track of your attendance in Attendance tab")
+                                .font(.footnote)
+                            Text("Keep track of your grades in Grades tab")
+                                .font(.footnote)
+                            Text("Find study partners and engage in university life in Student Space")
+                                .font(.footnote)
+                            
+                            
+                        } header: {
+                            Text("Getting started")
                         }
                     }
-                } header: {
-                    Text("Statistics")
-                } footer: {
-                    if yearCompletion().isNaN || yearCompletion().isInfinite {
-                        Text("Semester dates are incorrect")
-                            .foregroundColor(.red)
-                    }
-                }
-                
-                
-                // Trending topics
-                Section {
-                    ForEach(0..<3) { index in
+                    
+                    
+                    // Statistics
+                    Section {
                         HStack {
-                            if index < topicsModel.topics.count {
-                                Text(topicsModel.topics[index].title)
+                            Text("Grade average")
+                            Spacer()
+                            Text("\(String(format: "%.2f", gradeAverage()))%")
+                        }
+                        HStack {
+                            Text("Attendance")
+                            Spacer()
+                            Text("\(String(format: "%.2f", Attendance()))%")
+                        }
+                        
+                        HStack {
+                            Text("Assessments to complete")
+                            Spacer()
+                            Text("\(assessmentsToComplete())")
+                        }
+                        
+                        if !(yearCompletion().isNaN || yearCompletion().isInfinite) {
+                            HStack {
+                                Text("Academic year completed in")
                                 Spacer()
-                                Text("\(topicsModel.topics[index].votes)")
+                                Text("\(String(format: "%.2f", yearCompletion()))%")
                             }
                         }
-                    }
-                } header: {
-                    Text("Trending topics")
-                }
-                .onChange(of: forceRedraw) { v in
-                    topicsModel.getData()
-                }
-                .onAppear() {
-                    topicsModel.getData()
-                }
-                
-                
-                // Deadlines
-                Section {
-                    ForEach(deadlines) { deadline in
-                        HStack {
-                            Text(deadline.name ?? "")
-                                .foregroundColor(.primary)
-                                .fontWeight(.medium)
-                            Spacer()
-                            Text("\(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") days left")
+                    } header: {
+                        Text("Statistics")
+                    } footer: {
+                        if yearCompletion().isNaN || yearCompletion().isInfinite {
+                            Text("Semester dates are incorrect")
+                                .foregroundColor(.red)
                         }
                     }
-                } header: {
-                    Text(deadlines.isEmpty ? "Your deadlines will appear here" : "Deadlines")
-                }
-            }
-            
-            
-            .refreshable {
-                topicsModel.getData()
-                print(topicsModel.topics)
-                forceRedraw += "1"
-            }
-            
-            .navigationTitle("Potential")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingSettings = true
-                    } label: {
-                        Label("Settings", systemImage: "gearshape")
+                    
+                    
+                    // Trending topics
+                    Section {
+                        ForEach(0..<3) { index in
+                            HStack {
+                                if index < topicsModel.topics.count {
+                                    Text(topicsModel.topics[index].title)
+                                    Spacer()
+                                    Text("\(topicsModel.topics[index].votes)")
+                                }
+                            }
+                        }
+                    } header: {
+                        Text("Trending topics")
+                    }
+                    .onChange(of: forceRedraw) { v in
+                        topicsModel.getData()
+                    }
+                    .onAppear() {
+                        topicsModel.getData()
+                    }
+                    
+                    
+                    // Deadlines
+                    Section {
+                        ForEach(deadlines) { deadline in
+                            HStack {
+                                Text(deadline.name ?? "")
+                                    .foregroundColor(.primary)
+                                    .fontWeight(.medium)
+                                Spacer()
+                                Text("\(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") days left")
+                            }
+                        }
+                    } header: {
+                        Text(deadlines.isEmpty ? "Your deadlines will appear here" : "Deadlines")
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        withAnimation() {
-                            gettingStarted.toggle()
+                
+                .refreshable {
+                    topicsModel.getData()
+                    print(topicsModel.topics)
+                    forceRedraw += "1"
+                }
+                
+                .navigationTitle("Potential")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showingSettings = true
+                        } label: {
+                            Label("Settings", systemImage: "gearshape")
                         }
-                    } label: {
-                        Label("Hints", systemImage: "questionmark.circle")
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            withAnimation() {
+                                gettingStarted.toggle()
+                            }
+                        } label: {
+                            Label("Hints", systemImage: "questionmark.circle")
+                        }
                     }
                 }
+                .sheet(isPresented: $showingSettings) {
+                    SettingsView(name: $name, email: $email, startDateStorage: $startDateStorage, endDateStorage: $endDateStorage)
+                }
+                
             }
-            .sheet(isPresented: $showingSettings) {
-                SettingsView(name: $name, email: $email, startDateStorage: $startDateStorage, endDateStorage: $endDateStorage)
-            }
-            
         }
     }
     

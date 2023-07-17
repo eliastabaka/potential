@@ -10,27 +10,32 @@ import SwiftUI
 struct ConnectView: View {
     @Binding private var username: String
     @Binding private var email: String
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    NavigationLink {
-                        ModuleView(username: $username, email: $email)
-                    } label: {
-                        Text("Study Partners")
+        if !networkMonitor.isConnected {
+            Text("No internet")
+        } else {
+            NavigationView {
+                List {
+                    Section {
+                        NavigationLink {
+                            ModuleView(username: $username, email: $email)
+                        } label: {
+                            Text("Study Partners")
+                        }
+                    }
+                    
+                    Section {
+                        NavigationLink {
+                            DepartmentTopicsView(author: $email)
+                        } label: {
+                            Text("University Topics")
+                        }
                     }
                 }
-                
-                Section {
-                    NavigationLink {
-                        DepartmentTopicsView(author: $email)
-                    } label: {
-                        Text("University Topics")
-                    }
-                }
+                .navigationTitle("Student Space")
             }
-            .navigationTitle("Student Space")
         }
     }
     
