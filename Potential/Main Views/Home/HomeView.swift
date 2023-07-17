@@ -88,15 +88,14 @@ struct HomeView: View {
                     
                     // Trending topics
                     Section {
-                        ForEach(0..<3) { index in
+                        ForEach(upToThree(arr: topicsModel.topics)) { topic in
                             HStack {
-                                if index < topicsModel.topics.count {
-                                    Text(topicsModel.topics[index].title)
-                                    Spacer()
-                                    Text("\(topicsModel.topics[index].votes)")
-                                }
+                                Text(topic.title)
+                                Spacer()
+                                Text("\(topic.votes)")
                             }
                         }
+                        
                     } header: {
                         Text("Trending topics")
                     } footer: {
@@ -113,8 +112,6 @@ struct HomeView: View {
                         ForEach(deadlines) { deadline in
                             HStack {
                                 Text(deadline.name ?? "")
-                                    .foregroundColor(.primary)
-                                    .fontWeight(.medium)
                                 Spacer()
                                 Text("\(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") days left")
                             }
@@ -123,7 +120,6 @@ struct HomeView: View {
                         Text(deadlines.isEmpty ? "Your deadlines will appear here" : "Deadlines")
                     }
                 }
-                
                 
                 .refreshable {
                     topicsModel.getData()
@@ -189,6 +185,17 @@ struct HomeView: View {
         }
         
         return sum / 120.0
+    }
+    
+    func upToThree(arr: [Topic]) -> [Topic] {
+        var newArr = [Topic]()
+        
+        for i in 0..<3 {
+            if i < arr.count {
+                newArr.append(arr[i])
+            }
+        }
+        return newArr
     }
     
     func Attendance() -> Double {

@@ -33,8 +33,10 @@ struct AttendanceView: View {
                                             Text(entry.title ?? "NA")
                                                 .fontWeight(.medium)
                                                 .foregroundColor(entry.attended ? .green : .red)
+                                                .padding(1)
                                             Text(entry.date?.formatted() ?? "NA")
                                                 .foregroundColor(.secondary)
+                                                .padding(1)
                                         }
                                         
                                     }

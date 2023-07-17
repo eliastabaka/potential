@@ -30,14 +30,18 @@ struct DeadlineView: View {
                                         Text(deadline.name ?? "")
                                             .foregroundColor(.primary)
                                             .fontWeight(.medium)
+                                            .padding(1)
                                         Text(deadline.date?.formatted() ?? "NA")
                                             .foregroundColor(.secondary)
+                                            .padding(1)
                                         Text("Time worked on: \(String(format: "%.2f", deadline.duration))h")
                                             .foregroundColor(.secondary)
+                                            .padding(1)
                                     }
                                     Spacer()
                                     Text("\(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") days left")
                                 }
+                                .padding(4)
                             }
                         }
                     }

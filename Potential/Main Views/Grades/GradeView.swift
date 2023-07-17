@@ -74,7 +74,7 @@ struct GradeView: View {
                         Button {
                             showingPredictions = true
                         } label: {
-                            Label("Predict", systemImage: "lightbulb")
+                            Label("Predict", systemImage: "compass.drawing")
                         }
                     }
                 }
