@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		667FFB4D2A65237500FDD2EC /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667FFB4C2A65237500FDD2EC /* ConnectView.swift */; };
 		667FFB4F2A6534B500FDD2EC /* AddTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667FFB4E2A6534B500FDD2EC /* AddTopic.swift */; };
+		667FFB512A653B5000FDD2EC /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667FFB502A653B5000FDD2EC /* NetworkMonitor.swift */; };
 		66800FDC2A64987C00BEC557 /* DepartmentTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FDB2A64987C00BEC557 /* DepartmentTopics.swift */; };
 		66800FDE2A649DBD00BEC557 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FDD2A649DBD00BEC557 /* Topic.swift */; };
 		66800FE02A649E2300BEC557 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FDF2A649E2300BEC557 /* Comment.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		667FFB4C2A65237500FDD2EC /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		667FFB4E2A6534B500FDD2EC /* AddTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopic.swift; sourceTree = "<group>"; };
+		667FFB502A653B5000FDD2EC /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		66800FDB2A64987C00BEC557 /* DepartmentTopics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentTopics.swift; sourceTree = "<group>"; };
 		66800FDD2A649DBD00BEC557 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		66800FDF2A649E2300BEC557 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				66B50A1F2A36918800F57E1E /* PotentialApp.swift */,
+				667FFB502A653B5000FDD2EC /* NetworkMonitor.swift */,
 				668EF7CA2A457596001BCA7E /* Main Views */,
 				668EF7CC2A45762A001BCA7E /* Add Views */,
 				668EF7DB2A4F6B2D001BCA7E /* Update Views */,
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				668EF7D62A4C77EE001BCA7E /* AssessmentExt.swift in Sources */,
+				667FFB512A653B5000FDD2EC /* NetworkMonitor.swift in Sources */,
 				66B50A572A3C7BC300F57E1E /* SettingsView.swift in Sources */,
 				668EF7E12A5092B7001BCA7E /* AddModules.swift in Sources */,
 				667FFB4D2A65237500FDD2EC /* ConnectView.swift in Sources */,

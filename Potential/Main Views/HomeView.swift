@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var showingSettings = false
     @State private var gettingStarted = false
     @Binding var name: String
@@ -27,6 +28,7 @@ struct HomeView: View {
                     Section{
                         Text("Add all of your modules in Settings -> Modules")
                             .font(.footnote)
+                            .foregroundColor(networkMonitor.isConnected ? .green : .red)
                         Text("For each module add relevant assessments")
                             .font(.footnote)
                         Text("Keep track of your attendance in Attendance tab")

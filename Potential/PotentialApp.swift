@@ -26,6 +26,7 @@ struct PotentialApp: App {
     // Databases configuration
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var dataController = DataController()
+    @StateObject var networkMonitor = NetworkMonitor()
     
     @AppStorage("username") var studentName = "Test User"
     @AppStorage("email") var studentEmailAddress = "test@sheffield.ac.uk"
@@ -70,6 +71,7 @@ struct PotentialApp: App {
 //                    }
             }
             .environment(\.managedObjectContext, dataController.container.viewContext)
+            .environmentObject(networkMonitor)
             
         }
     }
