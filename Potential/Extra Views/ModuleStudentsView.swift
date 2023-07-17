@@ -67,6 +67,19 @@ struct ModuleStudentsView: View {
                 }
             }
         }
+        
+        .refreshable {
+            students.getData(moduleDocumentId: module.id)
+            for student in students.list {
+                if student.email == mainEmail {
+                    currentStudent = student
+                    nameSharing = true
+                    break
+                } else {
+                    nameSharing = false
+                }
+            }
+        }
     }
     
     init(username: Binding<String>, email: Binding<String>, module: ModuleExt) {

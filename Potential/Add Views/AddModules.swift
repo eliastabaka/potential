@@ -15,11 +15,8 @@ struct AddModules: View {
     
     var body: some View {
         NavigationView {
-            
             List {
                 ForEach(modulesExt.list) { moduleE in
-                    
-                    
                     HStack {
                         VStack(alignment: .leading) {
                             Text(moduleE.code)

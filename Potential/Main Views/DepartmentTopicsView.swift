@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DepartmentTopicsView: View {
     @ObservedObject var topicsModel = DepartmentTopics()
+    @State private var showingAdd = false
+    @Binding var author: String
     
     var body: some View {
         List {
@@ -32,6 +34,27 @@ struct DepartmentTopicsView: View {
         .refreshable {
             topicsModel.getData()
         }
+        .navigationTitle("Topics")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showingAdd = true
+                } label: {
+                    Label("Settings", systemImage: "plus")
+                }
+            }
+
+        }
+        .sheet(isPresented: $showingAdd, onDismiss: {
+            withAnimation {
+                topicsModel.getData()
+            }
+        }, content: {
+            withAnimation {
+                AddTopic(author: $author)
+            }
+        })
     }
     
     func countVotes(_ voters: [Vote]) -> Int {
@@ -42,11 +65,5 @@ struct DepartmentTopicsView: View {
         }
         
         return counter
-    }
-}
-
-struct DepartmentTopicsView_Previews: PreviewProvider {
-    static var previews: some View {
-        DepartmentTopicsView()
     }
 }

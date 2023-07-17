@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showingSettings = false
-    @State private var gettingStarted = true
+    @State private var gettingStarted = false
     @Binding var name: String
     @Binding var email: String
     @Binding var startDateStorage: String
@@ -60,7 +60,7 @@ struct HomeView: View {
                         Spacer()
                         Text("\(assessmentsToComplete())")
                     }
-                    if yearCompletion().isNaN {
+                    if yearCompletion().isNaN || yearCompletion().isInfinite {
                         
                         
                         Text("Semester dates not specified.")
@@ -114,6 +114,16 @@ struct HomeView: View {
                         showingSettings = true
                     } label: {
                         Label("Settings", systemImage: "gearshape")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        withAnimation() {
+                            gettingStarted.toggle()
+                        }
+                    } label: {
+                        Label("Hints", systemImage: "questionmark.circle")
                     }
                 }
             }

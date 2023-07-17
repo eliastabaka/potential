@@ -14,18 +14,23 @@ struct ConnectView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink {
-                    ModuleView(username: $username, email: $email)
-                } label: {
-                    Text("Study Partners")
+                Section {
+                    NavigationLink {
+                        ModuleView(username: $username, email: $email)
+                    } label: {
+                        Text("Study Partners")
+                    }
                 }
                 
-                NavigationLink {
-                    DepartmentTopicsView()
-                } label: {
-                    Text("University Topics")
+                Section {
+                    NavigationLink {
+                        DepartmentTopicsView(author: $email)
+                    } label: {
+                        Text("University Topics")
+                    }
                 }
             }
+            .navigationTitle("Student Space")
         }
     }
     

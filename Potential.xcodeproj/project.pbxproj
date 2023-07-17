@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		667FFB4D2A65237500FDD2EC /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667FFB4C2A65237500FDD2EC /* ConnectView.swift */; };
+		667FFB4F2A6534B500FDD2EC /* AddTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667FFB4E2A6534B500FDD2EC /* AddTopic.swift */; };
 		66800FDC2A64987C00BEC557 /* DepartmentTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FDB2A64987C00BEC557 /* DepartmentTopics.swift */; };
 		66800FDE2A649DBD00BEC557 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FDD2A649DBD00BEC557 /* Topic.swift */; };
 		66800FE02A649E2300BEC557 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66800FDF2A649E2300BEC557 /* Comment.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		667FFB4C2A65237500FDD2EC /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		667FFB4E2A6534B500FDD2EC /* AddTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopic.swift; sourceTree = "<group>"; };
 		66800FDB2A64987C00BEC557 /* DepartmentTopics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentTopics.swift; sourceTree = "<group>"; };
 		66800FDD2A649DBD00BEC557 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		66800FDF2A649E2300BEC557 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				668EF7C62A45734E001BCA7E /* AddDeadline.swift */,
 				668EF7C82A457355001BCA7E /* AddGrade.swift */,
 				668EF7E02A5092B7001BCA7E /* AddModules.swift */,
+				667FFB4E2A6534B500FDD2EC /* AddTopic.swift */,
 			);
 			path = "Add Views";
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				668EF7D82A4C7884001BCA7E /* AddAssessment.swift in Sources */,
 				66800FE22A64A05200BEC557 /* DepartmentTopicsView.swift in Sources */,
 				66B50A512A3C686800F57E1E /* GradeView.swift in Sources */,
+				667FFB4F2A6534B500FDD2EC /* AddTopic.swift in Sources */,
 				668EF7DF2A4F712F001BCA7E /* UpdateAttendance.swift in Sources */,
 				66B50A482A3A162D00F57E1E /* ViewModules.swift in Sources */,
 				66B50A4B2A3C464F00F57E1E /* Potential.xcdatamodeld in Sources */,

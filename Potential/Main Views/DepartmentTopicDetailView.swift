@@ -12,25 +12,41 @@ struct DepartmentTopicDetailView: View {
     @ObservedObject var topicsModel = DepartmentTopics()
     @Environment(\.dismiss) var dismiss
     
+    
     var body: some View {
         Form {
             Section {
                 Text(topic.title)
-                Text(topic.description)
-                Text(topic.author)
-                Button("Vote up") {
-                    topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
-                    dismiss()
-                }
-                
-                Button("Vote down") {
-                    topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes - 1)
-                    dismiss()
-                }
+            } header: {
+                Text("Title")
             }
             
             Section {
-                
+                Text(topic.description)
+            } header: {
+                Text("Description")
+            }
+            
+            Section {
+                Text(topic.author)
+            } header: {
+                Text("Author")
+            }
+            
+            Section {
+                HStack {
+                    Button("Vote up") {
+                        topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
+                        dismiss()
+                    }
+                    
+                    Spacer()
+                    
+                    Button("Vote down") {
+                        topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes - 1)
+                        dismiss()
+                    }
+                }
             }
         }
     }

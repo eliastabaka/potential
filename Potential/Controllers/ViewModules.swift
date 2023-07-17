@@ -13,32 +13,6 @@ class ViewModules: ObservableObject {
     @Published var list = [ModuleExt]()
     @Published var assessmentList = [AssessmentExt]()
     
-//    func deleteData(moduleDelete: Module) {
-//        let db = Firestore.firestore()
-//        db.collection("students").document(moduleDelete.id).delete { error in
-//            if error == nil {
-//
-//                DispatchQueue.main.async {
-//                    self.list.removeAll { module in
-//                        return module.id == moduleDelete.id
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    func addData(code: String, name: String) {
-//        let db = Firestore.firestore()
-//        db.collection("students").addDocument(data: ["code": code, "name": name]) { error in
-//
-//            if error == nil {
-//                self.getData()
-//            } else {
-//
-//            }
-//        }
-//    }
-    
     func getData() {
         
         // Get a reference to the database
