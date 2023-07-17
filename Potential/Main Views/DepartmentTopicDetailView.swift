@@ -34,20 +34,21 @@ struct DepartmentTopicDetailView: View {
             }
             
             Section {
-                HStack {
-                    Button("Vote up") {
-                        topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
-                        dismiss()
-                    }
-                    
-                    Spacer()
-                    
-                    Button("Vote down") {
-                        topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes - 1)
-                        dismiss()
-                    }
+                Button("Vote up") {
+                    topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
+                    dismiss()
                 }
             }
+            
+            Section {
+                
+                Button("Vote down") {
+                    topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes - 1)
+                    dismiss()
+                }
+            }
+            
+            
         }
     }
 }

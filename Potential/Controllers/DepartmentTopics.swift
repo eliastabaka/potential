@@ -17,7 +17,7 @@ class DepartmentTopics: ObservableObject {
         let db = Firestore.firestore()
         
         let topic = db.collection("departmentTopics").document(topicId)
-        
+        print(newValue)
         topic.updateData([field: newValue])
     }
     

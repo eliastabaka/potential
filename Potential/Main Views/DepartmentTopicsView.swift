@@ -47,9 +47,7 @@ struct DepartmentTopicsView: View {
 
         }
         .sheet(isPresented: $showingAdd, onDismiss: {
-            withAnimation {
                 topicsModel.getData()
-            }
         }, content: {
             withAnimation {
                 AddTopic(author: $author)
