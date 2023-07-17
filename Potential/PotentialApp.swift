@@ -56,14 +56,18 @@ struct PotentialApp: App {
                         Label("Grades", systemImage: "percent")
                     }
                 
-                ModuleView(username: $studentName, email: $studentEmailAddress)
+                ConnectView(username: $studentName, email: $studentEmailAddress)
                     .tabItem {
                         Label("Student Space", systemImage: "person.3.fill")
                     }
-                DepartmentTopicsView()
-                    .tabItem {
-                        Label("Test", systemImage: "person.3.fill")
-                    }
+//                ModuleView(username: $studentName, email: $studentEmailAddress)
+//                    .tabItem {
+//                        Label("Student Space", systemImage: "person.3.fill")
+//                    }
+//                DepartmentTopicsView()
+//                    .tabItem {
+//                        Label("Test", systemImage: "person.3.fill")
+//                    }
             }
             .environment(\.managedObjectContext, dataController.container.viewContext)
             

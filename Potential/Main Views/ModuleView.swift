@@ -9,28 +9,26 @@ import SwiftUI
 
 struct ModuleView: View {
     @ObservedObject var modules = ViewModules()
-    @Binding private var username: String
+    @Binding  var username: String
     @Binding private var email: String
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(modules.list) { module in
-                    NavigationLink {
-                        ModuleStudentsView(username: $username, email: $email, module: module)
-                    } label: {
-                        VStack(alignment: .leading) {
-                            Text(module.code)
-                            Text(module.name)
-                        }
+        List {
+            ForEach(modules.list) { module in
+                NavigationLink {
+                    ModuleStudentsView(username: $username, email: $email, module: module)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(module.code)
+                        Text(module.name)
                     }
                 }
             }
-            .onAppear() {
-                modules.getData()
-            }
-            .navigationTitle("Modules")
         }
+        .onAppear() {
+            modules.getData()
+        }
+        .navigationTitle("Modules")
     }
     
     init(username: Binding<String>, email: Binding<String>) {
