@@ -105,34 +105,16 @@
 		668EF7CA2A457596001BCA7E /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
-				66B50A4E2A3C64F900F57E1E /* HomeView.swift */,
-				66B50A562A3C7BC300F57E1E /* SettingsView.swift */,
-				66B50A542A3C6A6200F57E1E /* DeadlineView.swift */,
-				66B50A522A3C690100F57E1E /* AttendanceView.swift */,
-				66B50A502A3C686800F57E1E /* GradeView.swift */,
-				668EF7D92A4E1B2A001BCA7E /* GradePredictionView.swift */,
-				66B50A452A3A15BA00F57E1E /* ModuleView.swift */,
-				66800FE12A64A05200BEC557 /* DepartmentTopicsView.swift */,
-				66800FE32A64A52E00BEC557 /* DepartmentTopicDetailView.swift */,
-				667FFB4C2A65237500FDD2EC /* ConnectView.swift */,
+				66A33B732A65BE4C00BFE16B /* Home */,
+				66A33B752A65BE9400BFE16B /* Attendance */,
+				66A33B742A65BE7900BFE16B /* Deadlines */,
+				66A33B762A65BF2D00BFE16B /* Grades */,
+				66A33B772A65BF6600BFE16B /* Student Space */,
 			);
 			path = "Main Views";
 			sourceTree = "<group>";
 		};
-		668EF7CC2A45762A001BCA7E /* Add Views */ = {
-			isa = PBXGroup;
-			children = (
-				668EF7C42A4570FC001BCA7E /* AddAttendance.swift */,
-				668EF7D72A4C7884001BCA7E /* AddAssessment.swift */,
-				668EF7C62A45734E001BCA7E /* AddDeadline.swift */,
-				668EF7C82A457355001BCA7E /* AddGrade.swift */,
-				668EF7E02A5092B7001BCA7E /* AddModules.swift */,
-				667FFB4E2A6534B500FDD2EC /* AddTopic.swift */,
-			);
-			path = "Add Views";
-			sourceTree = "<group>";
-		};
-		668EF7CD2A457748001BCA7E /* Controllers */ = {
+		668EF7CD2A457748001BCA7E /* Firebase Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				66B50A4C2A3C466600F57E1E /* DataController.swift */,
@@ -140,24 +122,85 @@
 				66B50A472A3A162D00F57E1E /* ViewModules.swift */,
 				66800FDB2A64987C00BEC557 /* DepartmentTopics.swift */,
 			);
-			path = Controllers;
+			path = "Firebase Controllers";
 			sourceTree = "<group>";
 		};
-		668EF7CE2A45778C001BCA7E /* Extra Views */ = {
+		66A33B732A65BE4C00BFE16B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				66B50A4E2A3C64F900F57E1E /* HomeView.swift */,
+				66A33B782A65BFA800BFE16B /* Settings */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		66A33B742A65BE7900BFE16B /* Deadlines */ = {
+			isa = PBXGroup;
+			children = (
+				668EF7C62A45734E001BCA7E /* AddDeadline.swift */,
+				66B50A542A3C6A6200F57E1E /* DeadlineView.swift */,
+				668EF7DC2A4F6B4B001BCA7E /* UpdateDeadline.swift */,
+			);
+			path = Deadlines;
+			sourceTree = "<group>";
+		};
+		66A33B752A65BE9400BFE16B /* Attendance */ = {
+			isa = PBXGroup;
+			children = (
+				66B50A522A3C690100F57E1E /* AttendanceView.swift */,
+				668EF7C42A4570FC001BCA7E /* AddAttendance.swift */,
+				668EF7DE2A4F712F001BCA7E /* UpdateAttendance.swift */,
+			);
+			path = Attendance;
+			sourceTree = "<group>";
+		};
+		66A33B762A65BF2D00BFE16B /* Grades */ = {
+			isa = PBXGroup;
+			children = (
+				66B50A502A3C686800F57E1E /* GradeView.swift */,
+				668EF7D92A4E1B2A001BCA7E /* GradePredictionView.swift */,
+				668EF7C82A457355001BCA7E /* AddGrade.swift */,
+			);
+			path = Grades;
+			sourceTree = "<group>";
+		};
+		66A33B772A65BF6600BFE16B /* Student Space */ = {
+			isa = PBXGroup;
+			children = (
+				667FFB4C2A65237500FDD2EC /* ConnectView.swift */,
+				66A33B7A2A65C70D00BFE16B /* Study Partners */,
+				66A33B792A65C6E400BFE16B /* Topics */,
+			);
+			path = "Student Space";
+			sourceTree = "<group>";
+		};
+		66A33B782A65BFA800BFE16B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				66B50A562A3C7BC300F57E1E /* SettingsView.swift */,
+				668EF7E02A5092B7001BCA7E /* AddModules.swift */,
+				668EF7D72A4C7884001BCA7E /* AddAssessment.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		66A33B792A65C6E400BFE16B /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				667FFB4E2A6534B500FDD2EC /* AddTopic.swift */,
+				66800FE32A64A52E00BEC557 /* DepartmentTopicDetailView.swift */,
+				66800FE12A64A05200BEC557 /* DepartmentTopicsView.swift */,
+			);
+			path = Topics;
+			sourceTree = "<group>";
+		};
+		66A33B7A2A65C70D00BFE16B /* Study Partners */ = {
 			isa = PBXGroup;
 			children = (
 				66B50A3E2A3748AC00F57E1E /* ModuleStudentsView.swift */,
+				66B50A452A3A15BA00F57E1E /* ModuleView.swift */,
 			);
-			path = "Extra Views";
-			sourceTree = "<group>";
-		};
-		668EF7DB2A4F6B2D001BCA7E /* Update Views */ = {
-			isa = PBXGroup;
-			children = (
-				668EF7DC2A4F6B4B001BCA7E /* UpdateDeadline.swift */,
-				668EF7DE2A4F712F001BCA7E /* UpdateAttendance.swift */,
-			);
-			path = "Update Views";
+			path = "Study Partners";
 			sourceTree = "<group>";
 		};
 		66B50A132A36918800F57E1E = {
@@ -183,11 +226,8 @@
 				66B50A1F2A36918800F57E1E /* PotentialApp.swift */,
 				667FFB502A653B5000FDD2EC /* NetworkMonitor.swift */,
 				668EF7CA2A457596001BCA7E /* Main Views */,
-				668EF7CC2A45762A001BCA7E /* Add Views */,
-				668EF7DB2A4F6B2D001BCA7E /* Update Views */,
-				668EF7CE2A45778C001BCA7E /* Extra Views */,
-				668EF7CD2A457748001BCA7E /* Controllers */,
-				66B50A342A36A0EC00F57E1E /* External Models */,
+				668EF7CD2A457748001BCA7E /* Firebase Controllers */,
+				66B50A342A36A0EC00F57E1E /* Firebase Models */,
 				66B50A232A36918800F57E1E /* Assets.xcassets */,
 				66B50A492A3C464F00F57E1E /* Potential.xcdatamodeld */,
 				66B50A2D2A369C9600F57E1E /* GoogleService-Info.plist */,
@@ -204,7 +244,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		66B50A342A36A0EC00F57E1E /* External Models */ = {
+		66B50A342A36A0EC00F57E1E /* Firebase Models */ = {
 			isa = PBXGroup;
 			children = (
 				66B50A352A36A11D00F57E1E /* ModuleExt.swift */,
@@ -214,7 +254,7 @@
 				66800FDF2A649E2300BEC557 /* Comment.swift */,
 				66800FE52A64B2D800BEC557 /* Vote.swift */,
 			);
-			path = "External Models";
+			path = "Firebase Models";
 			sourceTree = "<group>";
 		};
 		66B50A372A36A48000F57E1E /* Frameworks */ = {

@@ -34,7 +34,6 @@ struct HomeView: View {
                         Section{
                             Text("Add all of your modules in Settings -> Modules")
                                 .font(.footnote)
-                                .foregroundColor(networkMonitor.isConnected ? .green : .red)
                             Text("For each module add relevant assessments")
                                 .font(.footnote)
                             Text("Keep track of your attendance in Attendance tab")
@@ -100,11 +99,11 @@ struct HomeView: View {
                         }
                     } header: {
                         Text("Trending topics")
+                    } footer: {
+                        Text("Swipe down to refresh")
+                            .foregroundColor(.green)
                     }
                     .onChange(of: forceRedraw) { v in
-                        topicsModel.getData()
-                    }
-                    .onAppear() {
                         topicsModel.getData()
                     }
                     
@@ -128,7 +127,6 @@ struct HomeView: View {
                 
                 .refreshable {
                     topicsModel.getData()
-                    print(topicsModel.topics)
                     forceRedraw += "1"
                 }
                 

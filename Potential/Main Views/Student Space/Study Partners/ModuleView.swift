@@ -29,6 +29,7 @@ struct ModuleView: View {
             modules.getData()
         }
         .navigationTitle("Modules")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     init(username: Binding<String>, email: Binding<String>) {
@@ -37,9 +38,3 @@ struct ModuleView: View {
         modules.getData()
     }
 }
-
-//struct ModuleView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ModuleView(username: "Name Name", email: "email")
-//    }
-//}

@@ -20,8 +20,9 @@ struct AddGrade: View {
                     ForEach(0..<101) {
                         Text("\($0)")
                     }
-                    .pickerStyle(.menu)
+                    
                 }
+                .pickerStyle(.wheel)
             }
             .onAppear() {
                 selectedNumber = Int(assessment.grade)

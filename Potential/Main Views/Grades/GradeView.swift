@@ -25,18 +25,17 @@ struct GradeView: View {
         } else {
             NavigationView {
                 List {
-                    if !assessments.isEmpty {
-                        Section {
-                            HStack {
-                                Spacer()
-                                Text("Average: \(String(format: "%.2f", gradeAverage))")
-                                    .font(.title2)
-                                    .fontWeight(.medium)
-                                Spacer()
-                            }
-                            .padding()
-                        }
-                    }
+//                    if !assessments.isEmpty {
+//                        Section {
+//                            HStack {
+//                                Spacer()
+//                                Text("Average: \(String(format: "%.2f", gradeAverage))")
+//                                    .font(.title2)
+//                                    .fontWeight(.medium)
+//                                Spacer()
+//                            }
+//                        }
+//                    }
                     
                     ForEach(modules) { module in
                         Section {
@@ -44,30 +43,19 @@ struct GradeView: View {
                                 NavigationLink {
                                     AddGrade(assessment: assessment)
                                 } label: {
-                                    VStack(alignment: .leading) {
+                                    
+                                    
+                                    HStack {
+                                        Text("\(assessment.name ?? "n") ( \(Int(assessment.percentage))%)")
+                                        Spacer()
                                         
-                                        Text(assessment.name ?? "n")
-                                        HStack {
-                                            Spacer()
-                                            Text("Weight: \(Int(assessment.percentage))%")
-                                            Spacer()
-                                            Spacer()
-                                            Spacer()
-                                            Spacer()
-                                            if assessment.grade == 0 {
-                                                Text("Grade: ?")
-                                                    .foregroundColor(.red)
-                                            } else {
-                                                Text("Grade: \(assessment.grade)")
-                                            }
-                                            Spacer()
-                                            Spacer()
-                                            
-                                        }
-                                        .padding(0.5)
-                                        
+                                        Text(assessment.grade == 0 ? "0" : "\(assessment.grade)")
+                                            .foregroundColor(assessment.grade == 0 ? .red : .primary)
                                     }
+                                    .padding(3)
+                                    
                                 }
+                                
                             }
                         } header: {
                             Text("\(module.code ?? "N/A") \(module.name ?? "N/A")")
@@ -79,13 +67,14 @@ struct GradeView: View {
                 .onAppear() {
                     updateAverage()
                 }
-                .navigationTitle("Grades")
+                .navigationTitle("Grades Average:    \(String(format: "%.2f", gradeAverage))")
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             showingPredictions = true
                         } label: {
-                            Text("Predict")
+                            Label("Predict", systemImage: "lightbulb")
                         }
                     }
                 }
