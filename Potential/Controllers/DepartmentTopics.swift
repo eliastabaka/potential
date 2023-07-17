@@ -23,8 +23,7 @@ class DepartmentTopics: ObservableObject {
     
     func addData(title: String, description: String, author: String) {
         let db = Firestore.firestore()
-        var ref: DocumentReference? = nil
-        ref = db.collection("departmentTopics").addDocument(data: ["title": title, "author": author, "description": description, "votes": 0]) { error in
+        db.collection("departmentTopics").addDocument(data: ["title": title, "author": author, "description": description, "votes": 0]) { error in
             
             if error == nil {
                 self.getData()

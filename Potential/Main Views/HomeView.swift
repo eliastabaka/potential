@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var networkMonitor: NetworkMonitor
+    @State private var forceRedraw = ""
     @State private var showingSettings = false
     @State private var gettingStarted = false
     @Binding var name: String
@@ -24,6 +25,8 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             Form {
+                
+                // Getting started Hints
                 if gettingStarted {
                     Section{
                         Text("Add all of your modules in Settings -> Modules")
@@ -45,6 +48,7 @@ struct HomeView: View {
                 }
                 
                 
+                // Statistics
                 Section {
                     HStack {
                         Text("Grade average")
@@ -62,12 +66,8 @@ struct HomeView: View {
                         Spacer()
                         Text("\(assessmentsToComplete())")
                     }
-                    if yearCompletion().isNaN || yearCompletion().isInfinite {
-                        
-                        
-                        Text("Semester dates not specified.")
-                            .foregroundColor(.red)
-                    } else {
+                    
+                    if !(yearCompletion().isNaN || yearCompletion().isInfinite) {
                         HStack {
                             Text("Academic year completed in")
                             Spacer()
@@ -76,8 +76,15 @@ struct HomeView: View {
                     }
                 } header: {
                     Text("Statistics")
+                } footer: {
+                    if yearCompletion().isNaN || yearCompletion().isInfinite {
+                        Text("Semester dates are incorrect")
+                            .foregroundColor(.red)
+                    }
                 }
                 
+                
+                // Trending topics
                 Section {
                     ForEach(0..<3) { index in
                         HStack {
@@ -91,7 +98,15 @@ struct HomeView: View {
                 } header: {
                     Text("Trending topics")
                 }
+                .onChange(of: forceRedraw) { v in
+                    topicsModel.getData()
+                }
+                .onAppear() {
+                    topicsModel.getData()
+                }
                 
+                
+                // Deadlines
                 Section {
                     ForEach(deadlines) { deadline in
                         HStack {
@@ -106,9 +121,14 @@ struct HomeView: View {
                     Text(deadlines.isEmpty ? "Your deadlines will appear here" : "Deadlines")
                 }
             }
-            .onAppear() {
+            
+            
+            .refreshable {
                 topicsModel.getData()
+                print(topicsModel.topics)
+                forceRedraw += "1"
             }
+            
             .navigationTitle("Potential")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -132,9 +152,7 @@ struct HomeView: View {
             .sheet(isPresented: $showingSettings) {
                 SettingsView(name: $name, email: $email, startDateStorage: $startDateStorage, endDateStorage: $endDateStorage)
             }
-            .refreshable {
-                topicsModel.getData()
-            }
+            
         }
     }
     
