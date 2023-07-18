@@ -73,7 +73,7 @@ struct GradePredictionView: View {
                 }
                 updateCompletedAverage()
             }
-            .navigationTitle("Prediction:  \(String(format: "%.2f", (predictionsSum + completedGradesAverage) / 120.0))")
+            .navigationTitle(pAssessments.isEmpty ? "All assessments are now completed" : "Prediction:  \(String(format: "%.2f", (predictionsSum + completedGradesAverage) / 120.0))")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

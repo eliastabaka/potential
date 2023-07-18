@@ -39,7 +39,7 @@ struct DeadlineView: View {
                                             .padding(1)
                                     }
                                     Spacer()
-                                    Text("\(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") days left")
+                                    Text((Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") != "1" ? "\(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") days left" : "\(Calendar.current.dateComponents([.day], from: Date.now, to: deadline.date ?? Date.now).day?.formatted() ?? "a") day left")
                                 }
                                 .padding(4)
                             }
@@ -67,15 +67,16 @@ struct DeadlineView: View {
                 }
             }
         }
+    }
+    
+    func deleteDeadline(at offsets: IndexSet) {
+        for offset in offsets {
+            let deadline = deadlines[offset]
+            moc.delete(deadline)
         }
-        func deleteDeadline(at offsets: IndexSet) {
-            for offset in offsets {
-                let deadline = deadlines[offset]
-                moc.delete(deadline)
-            }
-            
-            try? moc.save()
-        }
+        
+        try? moc.save()
+    }
 }
 
 struct DeadlineView_Previews: PreviewProvider {
