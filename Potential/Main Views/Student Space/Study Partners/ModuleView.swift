@@ -28,7 +28,7 @@ struct ModuleView: View {
         .onAppear() {
             modules.getData()
         }
-        .navigationTitle("Modules")
+        .navigationTitle("Study Partners")
         .navigationBarTitleDisplayMode(.inline)
     }
     

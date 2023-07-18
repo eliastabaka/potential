@@ -34,17 +34,23 @@ struct DepartmentTopicDetailView: View {
             }
             
             Section {
-                Button("Vote up") {
+                Button {
                     topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
                     dismiss()
+                } label: {
+                    Text("Vote Up")
+                        .foregroundColor(.green)
                 }
             }
             
             Section {
                 
-                Button("Vote down") {
+                Button {
                     topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes - 1)
                     dismiss()
+                } label: {
+                    Text("Vote Down")
+                        .foregroundColor(.red)
                 }
             }
             

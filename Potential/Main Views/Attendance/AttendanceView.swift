@@ -56,6 +56,7 @@ struct AttendanceView: View {
                     }
                 }
                 .navigationTitle("Attendance")
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton()

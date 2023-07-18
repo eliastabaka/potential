@@ -35,6 +35,7 @@ struct ConnectView: View {
                     }
                 }
                 .navigationTitle("Student Space")
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

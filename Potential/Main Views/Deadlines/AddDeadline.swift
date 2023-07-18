@@ -42,7 +42,6 @@ struct AddDeadline: View {
                 }
                 
             }
-                .navigationTitle("Add deadline entry")
         }
     }
 }

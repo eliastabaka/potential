@@ -22,6 +22,9 @@ struct UpdateAttendance: View {
         List {
             Section {
                 TextField("Title", text: $title)
+            }
+            
+            Section {
                 DatePicker(selection: $date) {
                     Text("Select a date")
                 }
@@ -52,7 +55,5 @@ struct UpdateAttendance: View {
             isAttended = attendance.attended
             date = attendance.date ?? Date.now
         }
-        .navigationTitle("\(attendance.title ?? "NA")")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }

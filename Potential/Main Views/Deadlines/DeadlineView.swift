@@ -48,6 +48,7 @@ struct DeadlineView: View {
                     .onDelete(perform: deleteDeadline)
                 }
                 .navigationTitle("Deadlines")
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton()

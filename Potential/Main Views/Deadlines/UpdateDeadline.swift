@@ -22,6 +22,9 @@ struct UpdateDeadline: View {
             List {
                 Section {
                     TextField("Name", text: $name)
+                }
+                
+                Section {
                     DatePicker(selection: $date, in: Date.now...) {
                         Text("Select a date")
                     }
@@ -46,7 +49,5 @@ struct UpdateDeadline: View {
                 name = deadline.name ?? "NA"
                 date = deadline.date ?? Date.now
             }
-            .navigationTitle("\(deadline.name ?? "NA")")
-            .navigationBarTitleDisplayMode(.inline)
     }
 }
