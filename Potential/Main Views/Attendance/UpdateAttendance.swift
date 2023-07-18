@@ -17,6 +17,7 @@ struct UpdateAttendance: View {
     @State private var week = 1
     @State private var isAttended = false
     @State private var date = Date.now
+    @State private var semester = 1
     
     var body: some View {
         List {
@@ -33,13 +34,22 @@ struct UpdateAttendance: View {
                         Text("\(week)").tag(week)
                     }
                 }
-                Toggle("Attended?", isOn: $isAttended)
-                
+                Picker("", selection: $semester) {
+                    ForEach([1, 2], id: \.self) { id in
+                        Text("Semester \(id)")
+                    }
+                }
+                .pickerStyle(.segmented)
             }
+            
+            Section {
+                Toggle("Attended?", isOn: $isAttended)
+            }
+            
             Section {
                 Button("Save") {
                     attendance.title = title
-                    attendance.week = Int16(week)
+                    attendance.week = Int16(week * semester)
                     attendance.attended = isAttended
                     attendance.date = date
                     

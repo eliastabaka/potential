@@ -39,7 +39,7 @@ struct SettingsView: View {
                             startDateStorage = dateFormatter.string(from: startDate)
                         }
                                   
-                        DatePicker(selection: $endDate, displayedComponents: .date) {
+                        DatePicker(selection: $endDate, in: (startDate + 86400)..., displayedComponents: .date) {
                             Text("End Date")
                         }
                         .onChange(of: endDate) {v in

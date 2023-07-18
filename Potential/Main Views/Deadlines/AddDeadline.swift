@@ -20,7 +20,10 @@ struct AddDeadline: View {
             List {
                 
                 Section {
-                    TextField("Name", text: $name)
+                    TextField("Title", text: $name)
+                }
+                
+                Section {
                     DatePicker(selection: $date, in: Date.now...) {
                         Text("Select a date")
                     }

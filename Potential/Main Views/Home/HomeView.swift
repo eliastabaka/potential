@@ -29,25 +29,25 @@ struct HomeView: View {
             NavigationView {
                 Form {
                     
-                    // Getting started Hints
-                    if gettingStarted {
-                        Section{
-                            Text("Add all of your modules in Settings -> Modules")
-                                .font(.footnote)
-                            Text("For each module add relevant assessments")
-                                .font(.footnote)
-                            Text("Keep track of your attendance in Attendance tab")
-                                .font(.footnote)
-                            Text("Keep track of your grades in Grades tab")
-                                .font(.footnote)
-                            Text("Find study partners and engage in university life in Student Space")
-                                .font(.footnote)
-                            
-                            
-                        } header: {
-                            Text("Getting started")
-                        }
-                    }
+//                    // Getting started Hints
+//                    if gettingStarted {
+//                        Section{
+//                            Text("Add all of your modules in Settings -> Modules")
+//                                .font(.footnote)
+//                            Text("For each module add relevant assessments")
+//                                .font(.footnote)
+//                            Text("Keep track of your attendance in Attendance tab")
+//                                .font(.footnote)
+//                            Text("Keep track of your grades in Grades tab")
+//                                .font(.footnote)
+//                            Text("Find study partners and engage in university life in Student Space")
+//                                .font(.footnote)
+//
+//
+//                        } header: {
+//                            Text("Getting started")
+//                        }
+//                    }
                     
                     
                     // Statistics
@@ -136,15 +136,15 @@ struct HomeView: View {
                         }
                     }
                     
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            withAnimation() {
-                                gettingStarted.toggle()
-                            }
-                        } label: {
-                            Label("Hints", systemImage: "questionmark.circle")
-                        }
-                    }
+//                    ToolbarItem(placement: .navigationBarLeading) {
+//                        Button {
+//                            withAnimation() {
+//                                gettingStarted.toggle()
+//                            }
+//                        } label: {
+//                            Label("Hints", systemImage: "questionmark.circle")
+//                        }
+//                    }
                 }
                 .sheet(isPresented: $showingSettings) {
                     SettingsView(name: $name, email: $email, startDateStorage: $startDateStorage, endDateStorage: $endDateStorage)
@@ -162,7 +162,8 @@ struct HomeView: View {
         let bigDifference: Double = Double(Calendar.current.dateComponents([.day], from: start, to: end ).day?.formatted() ?? "1.0") ?? 1.0
         let smallDifference: Double = Double(Calendar.current.dateComponents([.day], from: start, to: Date.now ).day?.formatted() ?? "1.0") ?? 1.0
         
-        return (smallDifference / bigDifference) * 100
+        let calculation = (smallDifference / bigDifference) * 100
+        return calculation > 100.0 ? 100.0 : calculation
         
     }
     

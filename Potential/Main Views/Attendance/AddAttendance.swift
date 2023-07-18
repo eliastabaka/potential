@@ -15,6 +15,7 @@ struct AddAttendance: View {
     
     @State private var title = ""
     @State private var week = 1
+    @State private var semester = 1
     @State private var isAttended = false
     @State private var date = Date.now
     
@@ -26,6 +27,9 @@ struct AddAttendance: View {
             List {
                 Section {
                     TextField("Title", text: $title)
+                }
+                
+                Section {
                     DatePicker(selection: $date) {
                         Text("Select a date")
                     }
@@ -34,6 +38,15 @@ struct AddAttendance: View {
                             Text("\(week)").tag(week)
                         }
                     }
+                    Picker("", selection: $semester) {
+                        ForEach([1, 2], id: \.self) { id in
+                            Text("Semester \(id)")
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+                
+                Section {
                     Toggle("Attended?", isOn: $isAttended)
                     
                 }
@@ -43,7 +56,7 @@ struct AddAttendance: View {
                         let newAttendanceEntry = Attendance(context: moc)
                         newAttendanceEntry.id = UUID()
                         newAttendanceEntry.title = title
-                        newAttendanceEntry.week = Int16(week)
+                        newAttendanceEntry.week = Int16(week * semester)
                         newAttendanceEntry.attended = isAttended
                         newAttendanceEntry.date = date
                         

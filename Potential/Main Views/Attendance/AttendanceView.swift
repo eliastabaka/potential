@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AttendanceView: View {
-    let weeks = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    let weeks = [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     @State private var showingAdd = false
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var networkMonitor: NetworkMonitor
@@ -47,7 +47,7 @@ struct AttendanceView: View {
                             
                         } header: {
                             if checkIfWeekExists(week: week) {
-                                Text("Week \(week)")
+                                Text(week > 12 ? "Semester 2 Week \(week - 12)" : "Semester 1 Week \(week)")
                             }
                         }
                         
