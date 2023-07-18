@@ -25,12 +25,9 @@ struct DepartmentTopicsView: View {
                         Text("\(topic.votes)")
                     }
                 }
-                
-                
-                
             }
         }
-        .searchable(text: $searchText, prompt: "Look for a specific content")
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Look for a specific content")
         .onAppear() {
             topicsModel.getData()
         }

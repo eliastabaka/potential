@@ -26,7 +26,7 @@ struct ModuleView: View {
                 }
             }
         }
-        .searchable(text: $searchText, prompt: "Look for a module")
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Look for a module")
         .onAppear() {
             modules.getData()
         }

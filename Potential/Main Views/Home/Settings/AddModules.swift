@@ -43,32 +43,7 @@ struct AddModules: View {
                                         dismiss()
                                     }
                             }
-                            
-                            //                        if !isModuleAdded(code: moduleE.code) {
-                            //                            Button {
-                            //                                let newModule = Module(context: moc)
-                            //                                newModule.id = UUID()
-                            //                                newModule.code = moduleE.code
-                            //                                newModule.name = moduleE.name
-                            //                                newModule.extId = moduleE.id
-                            //                                newModule.credits = Int16(moduleE.credits)
-                            //
-                            //                                do {
-                            //                                    try moc.save()
-                            //                                } catch {
-                            //                                    print(error.localizedDescription)
-                            //                                }
-                            //                                dismiss()
-                            //                            } label: {
-                            //                                Label("", systemImage: "plus")
-                            //                            }
-                            //                        }
-                            
                         }
-                        
-                        
-                        
-                        
                     }
                 }
                 
@@ -76,7 +51,7 @@ struct AddModules: View {
             .onAppear() {
                 modulesExt.getData()
             }
-        .searchable(text: $searchText, prompt: "Look for a module")
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Look for a module")
     }
     
     var searchResults: [ModuleExt] {

@@ -24,7 +24,7 @@ struct HomeView: View {
     
     var body: some View {
         if !networkMonitor.isConnected {
-            Text("No internet")
+            NoConnectionView()
         } else {
             NavigationView {
                 Form {

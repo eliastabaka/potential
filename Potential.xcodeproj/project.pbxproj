@@ -25,6 +25,7 @@
 		668EF7DD2A4F6B4B001BCA7E /* UpdateDeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7DC2A4F6B4B001BCA7E /* UpdateDeadline.swift */; };
 		668EF7DF2A4F712F001BCA7E /* UpdateAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7DE2A4F712F001BCA7E /* UpdateAttendance.swift */; };
 		668EF7E12A5092B7001BCA7E /* AddModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668EF7E02A5092B7001BCA7E /* AddModules.swift */; };
+		66A33B7C2A66E13500BFE16B /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A33B7B2A66E13500BFE16B /* NoConnectionView.swift */; };
 		66B50A202A36918800F57E1E /* PotentialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B50A1F2A36918800F57E1E /* PotentialApp.swift */; };
 		66B50A242A36918800F57E1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A232A36918800F57E1E /* Assets.xcassets */; };
 		66B50A272A36918800F57E1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66B50A262A36918800F57E1E /* Preview Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		668EF7DC2A4F6B4B001BCA7E /* UpdateDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDeadline.swift; sourceTree = "<group>"; };
 		668EF7DE2A4F712F001BCA7E /* UpdateAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAttendance.swift; sourceTree = "<group>"; };
 		668EF7E02A5092B7001BCA7E /* AddModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModules.swift; sourceTree = "<group>"; };
+		66A33B7B2A66E13500BFE16B /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
 		66B50A1C2A36918800F57E1E /* Potential.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Potential.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B50A1F2A36918800F57E1E /* PotentialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialApp.swift; sourceTree = "<group>"; };
 		66B50A232A36918800F57E1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				66B50A1F2A36918800F57E1E /* PotentialApp.swift */,
 				667FFB502A653B5000FDD2EC /* NetworkMonitor.swift */,
+				66A33B7B2A66E13500BFE16B /* NoConnectionView.swift */,
 				668EF7CA2A457596001BCA7E /* Main Views */,
 				668EF7CD2A457748001BCA7E /* Firebase Controllers */,
 				66B50A342A36A0EC00F57E1E /* Firebase Models */,
@@ -344,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A33B7C2A66E13500BFE16B /* NoConnectionView.swift in Sources */,
 				668EF7D62A4C77EE001BCA7E /* AssessmentExt.swift in Sources */,
 				667FFB512A653B5000FDD2EC /* NetworkMonitor.swift in Sources */,
 				66B50A572A3C7BC300F57E1E /* SettingsView.swift in Sources */,
