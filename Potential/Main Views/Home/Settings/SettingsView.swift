@@ -52,6 +52,12 @@ struct SettingsView: View {
                         Text("Semester Dates")
                     }
                     
+                    NavigationLink {
+                       AddModules()
+                    } label: {
+                        Text("Add modules")
+                    }
+                    
                     Section {
                         ForEach(modules) { module in
                             NavigationLink {
@@ -64,12 +70,6 @@ struct SettingsView: View {
                         .onDelete(perform: deleteModules)
                     } header: {
                         Text("Your modules")
-                    }
-                    
-                    NavigationLink {
-                       AddModules()
-                    } label: {
-                        Text("Add modules")
                     }
                 }
             }

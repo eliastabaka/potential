@@ -26,7 +26,7 @@ struct AddAssessment: View {
                 }
                 .onDelete(perform: deleteAssessments)
             } header: {
-                Text("Already added")
+                Text(noOfAssessmentsAdded() == 0 ? "" : "Assessments added")
             }
             
             
@@ -76,6 +76,18 @@ struct AddAssessment: View {
             }
         }
         return false
+    }
+    
+    func noOfAssessmentsAdded() -> Int {
+        var counter = 0
+        
+        for assessment in assessments {
+            if assessment.moduleCode == module.code {
+                counter += 1
+            }
+        }
+        
+        return counter
     }
     
     func deleteAssessments(at offsets: IndexSet) {
