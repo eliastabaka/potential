@@ -25,18 +25,6 @@ struct GradeView: View {
         } else {
             NavigationView {
                 List {
-//                    if !assessments.isEmpty {
-//                        Section {
-//                            HStack {
-//                                Spacer()
-//                                Text("Average: \(String(format: "%.2f", gradeAverage))")
-//                                    .font(.title2)
-//                                    .fontWeight(.medium)
-//                                Spacer()
-//                            }
-//                        }
-//                    }
-                    
                     ForEach(modules) { module in
                         Section {
                             ForEach(assessments.filter { a in return module.code ?? "" == a.moduleCode ?? ""}) { assessment in
@@ -67,7 +55,7 @@ struct GradeView: View {
                 .onAppear() {
                     updateAverage()
                 }
-                .navigationTitle("Grades Average:    \(String(format: "%.2f", gradeAverage))")
+                .navigationTitle("Grades Average:  \(String(format: "%.2f", gradeAverage))")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

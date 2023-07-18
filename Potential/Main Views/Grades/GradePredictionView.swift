@@ -24,16 +24,19 @@ struct PAView : View {
     var body: some View {
         Section {
             VStack(alignment: .leading) {
-                Text(predictionAssessment.assessment.name ?? "n")
-                Text(predictionAssessment.module.name ?? "NA")
-                Text(String(Int(predictionAssessment.assessment.percentage)))
-                Text(String(predictionAssessment.gradeEstimation))
+                HStack {
+                    Text("\(predictionAssessment.assessment.name ?? "n") ( \(Int(predictionAssessment.assessment.percentage))%)")
+                    Spacer()
+                    Text(String(Int(predictionAssessment.gradeEstimation)))
+                }
                 Slider(value: $selection, in: 0...100)
+            
             }
             .onChange(of: selection) { value in
                 predictionAssessment.gradeEstimation = selection
             }
-            
+        } header: {
+            Text("\(predictionAssessment.module.code ?? "N/A") \(predictionAssessment.module.name ?? "N/A")")
         }
     }
 }
@@ -70,11 +73,8 @@ struct GradePredictionView: View {
                 }
                 updateCompletedAverage()
             }
-            .toolbar() {
-                ToolbarItem(placement: .principal) {
-                    Text("Prediction \(String(format: "%.2f", (predictionsSum + completedGradesAverage) / 120.0))")
-                }
-            }
+            .navigationTitle("Prediction:  \(String(format: "%.2f", (predictionsSum + completedGradesAverage) / 120.0))")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
