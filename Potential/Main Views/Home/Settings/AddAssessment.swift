@@ -16,6 +16,18 @@ struct AddAssessment: View {
     var body: some View {
         List {
             Section {
+                Text(module.name ?? "NA")
+            } header: {
+                Text("Name")
+            }
+            
+            Section {
+                Text(String(module.credits))
+            } header: {
+                Text("Credits")
+            }
+            
+            Section {
                 ForEach(assessments) { assessment in
                     if assessment.moduleCode == module.code {
                         VStack(alignment: .leading) {
@@ -29,9 +41,8 @@ struct AddAssessment: View {
                 Text(noOfAssessmentsAdded() == 0 ? "" : "Assessments added")
             }
             
-            
-            ForEach(modulesExt.assessmentList) { assessmentE in
-                Section {
+            Section {
+                ForEach(modulesExt.assessmentList) { assessmentE in
                     HStack {
                         Text(assessmentE.name)
                         Spacer()
@@ -56,9 +67,14 @@ struct AddAssessment: View {
                             .buttonStyle(PlainButtonStyle())
                         }
                     }
+                    
                 }
+                
+            } header: {
+                Text("Available assessments to add")
             }
         }
+        .listStyle(.insetGrouped)
         .navigationTitle(module.code ?? "NA")
         .navigationBarTitleDisplayMode(.inline)
     }

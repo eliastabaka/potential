@@ -56,7 +56,7 @@ struct AddAttendance: View {
                         let newAttendanceEntry = Attendance(context: moc)
                         newAttendanceEntry.id = UUID()
                         newAttendanceEntry.title = title
-                        newAttendanceEntry.week = Int16(week * semester)
+                        newAttendanceEntry.week = Int16(week + ((semester - 1) * 12))
                         newAttendanceEntry.attended = isAttended
                         newAttendanceEntry.date = date
                         

@@ -49,7 +49,7 @@ struct UpdateAttendance: View {
             Section {
                 Button("Save") {
                     attendance.title = title
-                    attendance.week = Int16(week * semester)
+                    attendance.week = Int16(week + ((semester - 1) * 12))
                     attendance.attended = isAttended
                     attendance.date = date
                     
@@ -61,7 +61,15 @@ struct UpdateAttendance: View {
         }
         .onAppear() {
             title = attendance.title ?? "NA"
-            week = Int(attendance.week)
+            
+            if attendance.week > 12 {
+                week = Int(attendance.week - 12)
+                semester = 2
+            } else {
+                week = Int(attendance.week)
+                semester = 1
+            }
+            
             isAttended = attendance.attended
             date = attendance.date ?? Date.now
         }
