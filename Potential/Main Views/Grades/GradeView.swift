@@ -28,6 +28,16 @@ struct GradeView: View {
             NavigationView {
                 List {
                     
+                    Section {
+                        HStack() {
+                            Spacer()
+                            Text("Grades Average and Prediction are for information only and might differ from the year final grade you are awarded.")
+                                .foregroundStyle(.blue)
+                                .font(.footnote)
+                            Spacer()
+                        }
+                    }
+                    
                     if showingCreditsWarning {
                         Section {
                             Text("Credits Sum: \(creditsSum())/120")

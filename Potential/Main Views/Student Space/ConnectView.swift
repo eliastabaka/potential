@@ -19,6 +19,16 @@ struct ConnectView: View {
             NavigationView {
                 List {
                     Section {
+                        HStack() {
+                            Spacer()
+                            Text("Your data from Study Partners and University Topics is stored on remote servers and available to all app users. You can withdraw it at any time by contacting you institution's administration.")
+                                .foregroundStyle(.blue)
+                                .font(.footnote)
+                            Spacer()
+                        }
+                    }
+                    
+                    Section {
                         NavigationLink {
                             ModuleView(username: $username, email: $email)
                         } label: {

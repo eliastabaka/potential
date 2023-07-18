@@ -22,45 +22,44 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: []) var modules: FetchedResults<Module>
     @FetchRequest(sortDescriptors: []) var attendanceEntries: FetchedResults<Attendance>
     
+    let generalInfo = "You can add relevant modules and assessments in Settings. Remember to add all of the assessments for each module."
+    let studyPartners = "Contact prospective study partners or add your name to the list in Student Space -> Study Partners"
+    let learnGrades = "Update assessment grades in 'Grades' tab. You can estimate your future grades by clicking on the compass icon."
+    let learnAttendance = "Add your entries in 'Attendance' tab"
+    let learnSemesterDates = "Update your semester dates in Settings"
+    let learnTrends = "View all trending topics in Student Space -> University Topics. Remember to refresh by swiping down."
+    let learnDeadlines = "Add your deadlines in 'Deadlines' tab. After each working session you can update the time spent."
+    
+    let helpColor = Color.blue
+    
     var body: some View {
         if !networkMonitor.isConnected {
             NoConnectionView()
         } else {
             NavigationView {
                 Form {
+                    Section {
+                        if gettingStarted {
+                            Text(generalInfo)
+                                .font(.footnote)
+                                .foregroundStyle(helpColor)
+                        }
+                    }
                     
-//                    // Getting started Hints
-//                    if gettingStarted {
-//                        Section{
-//                            Text("Add all of your modules in Settings -> Modules")
-//                                .font(.footnote)
-//                            Text("For each module add relevant assessments")
-//                                .font(.footnote)
-//                            Text("Keep track of your attendance in Attendance tab")
-//                                .font(.footnote)
-//                            Text("Keep track of your grades in Grades tab")
-//                                .font(.footnote)
-//                            Text("Find study partners and engage in university life in Student Space")
-//                                .font(.footnote)
-//
-//
-//                        } header: {
-//                            Text("Getting started")
-//                        }
-//                    }
-                    
-                    
+                    Section {
+                        if gettingStarted {
+                            Text(studyPartners)
+                                .font(.footnote)
+                                .foregroundStyle(helpColor)
+                        }
+                    }
+
                     // Statistics
                     Section {
                         HStack {
                             Text("Grade average")
                             Spacer()
                             Text("\(String(format: "%.2f", gradeAverage()))%")
-                        }
-                        HStack {
-                            Text("Attendance")
-                            Spacer()
-                            Text("\(String(format: "%.2f", Attendance()))%")
                         }
                         
                         HStack {
@@ -69,6 +68,26 @@ struct HomeView: View {
                             Text("\(assessmentsToComplete())")
                         }
                         
+                        if gettingStarted {
+                            Text(learnGrades)
+                                .font(.footnote)
+                                .foregroundStyle(helpColor)
+                        }
+                        
+                        
+                        HStack {
+                            Text("Attendance")
+                            Spacer()
+                            Text("\(String(format: "%.2f", Attendance()))%")
+                        }
+                        if gettingStarted {
+                            Text(learnAttendance)
+                                .font(.footnote)
+                                .foregroundStyle(helpColor)
+                        }
+                        
+                        
+                        
                         if !(yearCompletion().isNaN || yearCompletion().isInfinite) {
                             HStack {
                                 Text("Academic year completed in")
@@ -76,6 +95,12 @@ struct HomeView: View {
                                 Text("\(String(format: "%.2f", yearCompletion()))%")
                             }
                         }
+                        if gettingStarted {
+                            Text(learnSemesterDates)
+                                .font(.footnote)
+                                .foregroundStyle(helpColor)
+                        }
+                        
                     } header: {
                         Text("Statistics")
                     } footer: {
@@ -84,10 +109,14 @@ struct HomeView: View {
                                 .foregroundColor(.red)
                         }
                     }
-                    
-                    
+                
                     // Trending topics
                     Section {
+                        if gettingStarted {
+                            Text(learnTrends)
+                                .font(.footnote)
+                                .foregroundStyle(helpColor)
+                        }
                         ForEach(upToThree(arr: topicsModel.topics)) { topic in
                             HStack {
                                 Text(topic.title)
@@ -100,7 +129,7 @@ struct HomeView: View {
                         Text("Trending topics")
                     } footer: {
                         Text("Swipe down to refresh")
-                            .foregroundColor(.green)
+                            .foregroundStyle(.blue)
                     }
                     .onChange(of: forceRedraw) { v in
                         topicsModel.getData()
@@ -109,6 +138,11 @@ struct HomeView: View {
                     
                     // Deadlines
                     Section {
+                        if gettingStarted {
+                            Text(learnDeadlines)
+                                .font(.footnote)
+                                .foregroundStyle(helpColor)
+                        }
                         ForEach(deadlines) { deadline in
                             HStack {
                                 Text(deadline.name ?? "")
@@ -136,15 +170,15 @@ struct HomeView: View {
                         }
                     }
                     
-//                    ToolbarItem(placement: .navigationBarLeading) {
-//                        Button {
-//                            withAnimation() {
-//                                gettingStarted.toggle()
-//                            }
-//                        } label: {
-//                            Label("Hints", systemImage: "questionmark.circle")
-//                        }
-//                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            withAnimation() {
+                                gettingStarted.toggle()
+                            }
+                        } label: {
+                            Label("Hints", systemImage: "questionmark.circle")
+                        }
+                    }
                 }
                 .sheet(isPresented: $showingSettings) {
                     SettingsView(name: $name, email: $email, startDateStorage: $startDateStorage, endDateStorage: $endDateStorage)
