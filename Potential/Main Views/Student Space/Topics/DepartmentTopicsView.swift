@@ -11,10 +11,11 @@ struct DepartmentTopicsView: View {
     @ObservedObject var topicsModel = DepartmentTopics()
     @State private var showingAdd = false
     @Binding var author: String
+    @State private var searchText = ""
     
     var body: some View {
         List {
-            ForEach(topicsModel.topics) { topic in
+            ForEach(searchResults) { topic in
                 NavigationLink {
                     DepartmentTopicDetailView(topic: topic)
                 } label: {
@@ -28,7 +29,9 @@ struct DepartmentTopicsView: View {
                 
                 
             }
-        }.onAppear() {
+        }
+        .searchable(text: $searchText, prompt: "Look for a specific content")
+        .onAppear() {
             topicsModel.getData()
         }
         .refreshable {
@@ -64,4 +67,12 @@ struct DepartmentTopicsView: View {
         
         return counter
     }
+    
+    var searchResults: [Topic] {
+            if searchText.isEmpty {
+                return topicsModel.topics
+            } else {
+                return topicsModel.topics.filter { $0.title.lowercased().contains(searchText.lowercased()) || $0.description.lowercased().contains(searchText.lowercased()) }
+            }
+        }
 }
