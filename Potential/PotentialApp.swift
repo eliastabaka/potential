@@ -31,7 +31,7 @@ struct PotentialApp: App {
     @AppStorage("username") var studentName = "Test User"
     @AppStorage("email") var studentEmailAddress = "test@sheffield.ac.uk"
     @AppStorage("startDate") var startDateStorage = DateFormatter().string(from: Date.now)
-    @AppStorage("endDate") var endDateStorage = DateFormatter().string(from: Date.now)
+    @AppStorage("endDate") var endDateStorage = DateFormatter().string(from: Date.now + 86400)
     
     
     var body: some Scene {
