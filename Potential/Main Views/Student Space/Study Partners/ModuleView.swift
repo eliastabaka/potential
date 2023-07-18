@@ -11,10 +11,11 @@ struct ModuleView: View {
     @ObservedObject var modules = ViewModules()
     @Binding  var username: String
     @Binding private var email: String
+    @State private var searchText = ""
     
     var body: some View {
         List {
-            ForEach(modules.list) { module in
+            ForEach(searchResults) { module in
                 NavigationLink {
                     ModuleStudentsView(username: $username, email: $email, module: module)
                 } label: {
@@ -25,6 +26,7 @@ struct ModuleView: View {
                 }
             }
         }
+        .searchable(text: $searchText, prompt: "Look for a module")
         .onAppear() {
             modules.getData()
         }
@@ -37,4 +39,12 @@ struct ModuleView: View {
         self._email = email
         modules.getData()
     }
+    
+    var searchResults: [ModuleExt] {
+            if searchText.isEmpty {
+                return modules.list
+            } else {
+                return modules.list.filter { $0.code.contains(searchText.uppercased()) || $0.name.lowercased().contains(searchText)}
+            }
+        }
 }

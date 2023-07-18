@@ -14,7 +14,7 @@ struct DepartmentTopicDetailView: View {
     
     
     var body: some View {
-        Form {
+        List {
             Section {
                 Text(topic.title)
             } header: {
@@ -34,27 +34,29 @@ struct DepartmentTopicDetailView: View {
             }
             
             Section {
-                Button {
-                    topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
-                    dismiss()
-                } label: {
-                    Text("Vote Up")
-                        .foregroundColor(.green)
-                }
-            }
-            
-            Section {
-                
-                Button {
-                    topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes - 1)
-                    dismiss()
-                } label: {
-                    Text("Vote Down")
-                        .foregroundColor(.red)
+                HStack {
+                    Button {
+                        topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes + 1)
+                        dismiss()
+                    } label: {
+                        Text("Vote Up")
+                            .foregroundColor(.green)
+                    }
+                    
+                    Spacer()
+                    
+                    Button {
+                        topicsModel.update(topicId: topic.id, field: "votes", newValue: topic.votes - 1)
+                        dismiss()
+                    } label: {
+                        Text("Vote Down")
+                            .foregroundColor(.red)
+                    }
                 }
             }
             
             
         }
+        .buttonStyle(BorderlessButtonStyle())
     }
 }

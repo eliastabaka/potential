@@ -39,10 +39,6 @@ struct AddAssessment: View {
                         }
                     }
                 }
-                
-            }
-            .onAppear() {
-                modulesExt.getAssessmentData(moduleDocumentId: module.extId ?? "")
             }
             
             

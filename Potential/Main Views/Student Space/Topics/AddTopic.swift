@@ -18,12 +18,20 @@ struct AddTopic: View {
     var body: some View {
         Form {
             Section {
-                TextField("Title", text: $title)
+                TextField("", text: $title)
+                
+            } header: {
+                Text("Title")
+            }
+            
+            Section {
                 TextEditor(text: $description)
+            } header: {
+                Text("Description")
             }
             
             Section{
-                Button("Save") {
+                Button("Post") {
                     topicsModel.addData(title: title, description: description, author: author)
                     dismiss()
                 }
